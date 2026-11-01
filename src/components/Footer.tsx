@@ -65,7 +65,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/events"
+                                    href="/upcoming-events"
                                     className="transition-colors hover:text-lime-300"
                                 >
                                     Upcoming Events
@@ -115,7 +115,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/register"
+                                    href="/signup"
                                     className="transition-colors hover:text-lime-300"
                                 >
                                     Join Kindora
@@ -167,7 +167,7 @@ const Footer = () => {
                         </div>
 
                         <Link
-                            href="/events"
+                            href="/upcoming-events"
                             className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-lime-300 transition-colors hover:text-lime-200"
                         >
                             Make a difference

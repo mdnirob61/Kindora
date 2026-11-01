@@ -14,7 +14,7 @@ const features = [
         title: "Discover Events",
         description:
             "Explore upcoming community cleanups, donation drives, tree plantations, and other meaningful activities.",
-        link: "/events",
+        link: "/upcoming-events",
         linkText: "Explore events",
         iconColor: "bg-emerald-100 text-emerald-700",
     },
@@ -34,7 +34,7 @@ const features = [
         title: "Make Connections",
         description:
             "Meet like-minded people, work together, and build stronger communities through shared experiences.",
-        link: "/events",
+        link: "/upcoming-events",
         linkText: "Find your community",
         iconColor: "bg-sky-100 text-sky-700",
     },
@@ -44,7 +44,7 @@ const features = [
         title: "Make Local Impact",
         description:
             "Find opportunities to help in your area and spend your time on causes that truly matter.",
-        link: "/events",
+        link: "/upcoming-events",
         linkText: "Find opportunities",
         iconColor: "bg-orange-100 text-orange-700",
     },
@@ -130,7 +130,7 @@ const Features = () => {
                     </div>
 
                     <Link
-                        href="/events"
+                        href="/upcoming-events"
                         className="inline-flex shrink-0 items-center gap-2 rounded-full bg-lime-300 px-6 py-3 text-sm font-bold text-green-950 transition-colors hover:bg-lime-200"
                     >
                         Get Involved

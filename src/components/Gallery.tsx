@@ -64,7 +64,7 @@ const Gallery = () => {
                     </div>
 
                     <Link
-                        href="/events"
+                        href="/upcoming-events"
                         className="inline-flex w-fit items-center gap-2 rounded-full border border-green-800/20 px-5 py-3 text-sm font-semibold text-green-800 transition hover:bg-green-800 hover:text-white"
                     >
                         Explore Events
@@ -132,7 +132,7 @@ const Gallery = () => {
                     </div>
 
                     <Link
-                        href="/events"
+                        href="/upcoming-events"
                         className="inline-flex items-center gap-2 rounded-full bg-green-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-900"
                     >
                         Find Your Next Event

@@ -38,7 +38,7 @@ const Banner = () => {
                     {/* Buttons */}
                     <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                         <Link
-                            href="/events"
+                            href="/upcoming-events"
                             className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-7 font-semibold text-green-950 hover:bg-lime-200"
                         >
                             Explore Events

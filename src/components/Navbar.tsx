@@ -51,7 +51,7 @@ const Navbar = () => {
                     </Link>
 
                     <Link
-                        href="/events"
+                        href="/upcoming-events"
                         className="flex items-center gap-2 text-[1rem] font-semibold text-gray-600 transition-colors hover:text-green-700"
                     >
                         <CalendarDays size={17} />
@@ -152,7 +152,7 @@ const Navbar = () => {
                                 </DropdownMenuItem>
 
                                 <DropdownMenuItem className="cursor-pointer rounded-lg">
-                                    <Link href="/events" className="flex w-full items-center">
+                                    <Link href="/upcoming-events" className="flex w-full items-center">
                                         <CalendarDays className="mr-2 h-4 w-4" />
                                         Upcoming Events
                                     </Link>
