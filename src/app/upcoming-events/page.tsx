@@ -1,4 +1,5 @@
-import EventsFilter, { type IEvent, } from "@/components/EventsFilter";
+import EventsFilter from "@/components/EventsFilter";
+import { IEvent } from "@/lib/types/event";
 import Link from "next/link";
 
 const UpcomingEventsPage = async () => {
@@ -9,6 +10,7 @@ const UpcomingEventsPage = async () => {
 
         if (response.ok) {
             events = await response.json();
+            // console.log(events);
         }
     } catch (error) {
         console.error("Failed to fetch events:", error);

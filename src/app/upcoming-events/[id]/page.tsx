@@ -1,16 +1,8 @@
+import EventParticipation from "@/components/EventParticipation";
+import { IEvent } from "@/lib/types/event";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Event {
-    _id: string;
-    title: string;
-    description: string;
-    eventType: string;
-    thumbnail: string;
-    location: string;
-    eventDate: string;
-    organizerEmail?: string;
-}
+import { notFound } from "next/navigation";
 
 interface EventDetailsPageProps {
     params: Promise<{ id: string }>
@@ -19,23 +11,11 @@ interface EventDetailsPageProps {
 const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
     const { id } = await params;
 
-    let event: Event | null = null;
+    const res = await fetch(`http://localhost:5000/upcoming-event/${id}`);
 
-    try {
-        const res = await fetch(
-            `http://localhost:5000/upcoming-event/${id}`,
-            {
-                cache: "no-store",
-            },
-        );
-
-        if (res.ok) {
-            const data = await res.json();
-            event = data.event ?? data;
-        }
-    } catch (error) {
-        console.error("Failed to fetch event:", error);
-    }
+    if (!res.ok) notFound();
+    const event: IEvent = await res.json();
+    // console.log(event)
 
     if (!event) {
         return (
@@ -118,30 +98,7 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
                             </p>
                         </div>
 
-                        {event.organizerEmail && (
-                            <div className="mt-6">
-                                <h2 className="font-bold text-gray-900">
-                                    Event Organizer
-                                </h2>
-
-                                <p className="mt-2 text-gray-600">
-                                    {event.organizerEmail}
-                                </p>
-                            </div>
-                        )}
-
-                        <div className="mt-8 border-t border-gray-100 pt-6">
-                            <p className="mb-4 text-sm text-gray-500">
-                                Interested in making a difference? Join this community event.
-                            </p>
-
-                            <Link
-                                href="/joined-events"
-                                className="inline-flex w-full items-center justify-center rounded-xl bg-green-800 px-6 py-3.5 font-bold text-white transition hover:bg-green-700 sm:w-auto"
-                            >
-                                Join Event
-                            </Link>
-                        </div>
+                        <EventParticipation event={event}></EventParticipation>
                     </div>
                 </article>
             </div>

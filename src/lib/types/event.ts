@@ -6,4 +6,6 @@ export interface IEvent {
     thumbnail: string;
     location: string;
     eventDate: string;
+    joinedCount?: number;
+    isJoined?: boolean;
 }

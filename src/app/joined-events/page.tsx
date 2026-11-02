@@ -1,30 +1,35 @@
+import { IEvent } from "@/lib/types/event";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
 
-interface IEvent {
-    _id: string;
-    title: string;
-    description: string;
-    eventType: string;
-    thumbnail: string;
-    location: string;
-    eventDate: string;
-}
 
 const JoinedEventsPage = async () => {
-    let events: IEvent[] = [];
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+    const user = session?.user;
+    let joinedEvents: IEvent[] = [];
 
-    // We'll connect the joined events API later.
     try {
-        const response = await fetch("");
+        const response = await fetch(
+            `http://localhost:5000/joined-events/${user?.email}`,
+            {
+                cache: "no-store",
+            }
+        );
 
         if (response.ok) {
-            const data: IEvent[] = await response.json();
+            joinedEvents = await response.json();
 
-            events = [...data].sort(
+            // Sort by event date (soonest first)
+            joinedEvents.sort(
                 (a, b) =>
                     new Date(a.eventDate).getTime() -
-                    new Date(b.eventDate).getTime(),
+                    new Date(b.eventDate).getTime()
             );
         }
     } catch (error) {
@@ -76,77 +81,81 @@ const JoinedEventsPage = async () => {
                     </div>
 
                     <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800">
-                        {events.length} {events.length === 1 ? "Event" : "Events"}
+                        {joinedEvents.length} {joinedEvents.length === 1 ? "Event" : "Events"}
                     </span>
                 </div>
 
-                {events.length > 0 ? (
+                {joinedEvents.length > 0 ? (
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {events.map((event) => (
+                        {joinedEvents.map((event) => (
                             <article
                                 key={event._id}
                                 className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                             >
-                                <Link
-                                    href={`/upcoming-events/${event._id}`}
-                                    className="block"
-                                >
-                                    <div className="relative h-52 overflow-hidden bg-gray-100">
-                                        {event.thumbnail ? (
-                                            <Image
-                                                src={event.thumbnail}
-                                                alt={event.title}
-                                                fill
-                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                                className="object-cover transition duration-500 group-hover:scale-105"
-                                            />
-                                        ) : (
-                                            <div className="flex h-full items-center justify-center text-sm text-gray-400">
-                                                No image available
-                                            </div>
-                                        )}
 
-                                        <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold text-green-800 shadow-sm">
-                                            {event.eventType}
-                                        </span>
-                                    </div>
+                                <div className="relative h-52 overflow-hidden bg-gray-100">
+                                    {event.thumbnail ? (
+                                        <Image
+                                            src={event.thumbnail}
+                                            alt={event.title}
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            className="object-cover transition duration-500 group-hover:scale-105"
+                                        />
+                                    ) : (
+                                        <div className="flex h-full items-center justify-center text-sm text-gray-400">
+                                            No image available
+                                        </div>
+                                    )}
 
-                                    <div className="p-5">
-                                        <h3 className="line-clamp-1 text-lg font-bold text-gray-900 transition group-hover:text-green-800">
-                                            {event.title}
-                                        </h3>
+                                    <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold text-green-800 shadow-sm">
+                                        {event.eventType}
+                                    </span>
+                                </div>
 
-                                        <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-500">
-                                            {event.description}
+                                <div className="p-5">
+                                    <h3 className="line-clamp-1 text-lg font-bold text-gray-900 transition group-hover:text-green-800">
+                                        {event.title}
+                                    </h3>
+
+                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-500">
+                                        {event.description}
+                                    </p>
+
+                                    <div className="mt-4 space-y-2 text-sm text-gray-600">
+                                        <p className="flex items-center gap-2">
+                                            <span aria-hidden="true">📍</span>
+                                            <span className="line-clamp-1">
+                                                {event.location}
+                                            </span>
                                         </p>
 
-                                        <div className="mt-4 space-y-2 text-sm text-gray-600">
-                                            <p className="flex items-center gap-2">
-                                                <span aria-hidden="true">📍</span>
-                                                <span className="line-clamp-1">
-                                                    {event.location}
-                                                </span>
-                                            </p>
-
-                                            <p className="flex items-center gap-2">
-                                                <span aria-hidden="true">📅</span>
-                                                {new Date(
-                                                    `${event.eventDate.slice(0, 10)}T12:00:00`,
-                                                ).toLocaleDateString("en-US", {
+                                        <p className="flex items-center gap-2">
+                                            <span aria-hidden="true">📅</span>
+                                            {event.eventDate
+                                                ? new Date(event.eventDate).toLocaleDateString("en-US", {
                                                     month: "short",
                                                     day: "numeric",
                                                     year: "numeric",
-                                                })}
-                                            </p>
-                                        </div>
-
-                                        <div className="mt-5 border-t border-gray-100 pt-4">
-                                            <span className="text-sm font-bold text-green-800">
-                                                View Event →
-                                            </span>
-                                        </div>
+                                                })
+                                                : "Date not available"}
+                                        </p>
                                     </div>
-                                </Link>
+
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div className="mt-5 border-t border-gray-100 pt-4">
+                                            <Link
+                                                href={`/upcoming-events/${event._id}`}
+                                                className="block"
+                                            ><span className="text-sm font-bold text-green-800">
+                                                    View Event →
+                                                </span></Link>
+                                        </div>
+                                        <Button variant='destructive' className="mt-8 border-t border-gray-100">
+                                           <Trash2></Trash2> Remove Event
+                                        </Button>
+                                    </div>
+                                </div>
                             </article>
                         ))}
                     </div>
