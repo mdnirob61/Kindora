@@ -136,7 +136,7 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
                             </p>
 
                             <Link
-                                href="/login"
+                                href="/joined-events"
                                 className="inline-flex w-full items-center justify-center rounded-xl bg-green-800 px-6 py-3.5 font-bold text-white transition hover:bg-green-700 sm:w-auto"
                             >
                                 Join Event

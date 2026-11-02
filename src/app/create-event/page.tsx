@@ -29,8 +29,6 @@ const CreateEventPage = () => {
 
     const [eventDate, setEventDate] = useState("");
 
-    // Get today's date in local time.
-
     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 

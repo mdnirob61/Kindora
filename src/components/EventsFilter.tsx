@@ -2,16 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface IEvent {
-    _id: string;
-    title: string;
-    description: string;
-    eventType: string;
-    thumbnail: string;
-    location: string;
-    eventDate: string;
-}
+import { IEvent } from "@/lib/types/event";
 
 const eventTypes = [
     "All",

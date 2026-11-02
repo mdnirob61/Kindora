@@ -1,0 +1,269 @@
+'use client'
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "./ui/button"
+import { CalendarDays, ImagePlus, MapPin, Pencil, Sparkles } from "lucide-react"
+import Link from "next/link"
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { IEvent } from "@/lib/types/event"
+
+const eventTypes = [
+    "Cleanup",
+    "Plantation",
+    "Donation",
+    "Education",
+    "Health Awareness",
+    "Animal Welfare",
+    "Community Support",
+    "Other",
+];
+
+export default function UpdateEventsPage({ event }: {event: IEvent}) {
+    const router = useRouter();
+
+    const [eventDate, setEventDate] = useState(event.eventDate);
+
+    const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        const eventData = {
+            title: formData.get("title") as string,
+            description: formData.get("description") as string,
+            eventType: formData.get("eventType") as string,
+            location: formData.get("location") as string,
+            thumbnail: formData.get("thumbnail") as string,
+            eventDate: formData.get("eventDate") as string,
+        };
+
+        // Calculate today's date when the form is submitted.
+        const today = new Date();
+
+        const minDate = `${today.getFullYear()}-${String(
+            today.getMonth() + 1
+        ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+        if (!eventData.eventDate || eventData.eventDate <= minDate) {
+            alert("Please select a future date.");
+            return;
+        }
+
+        const res = await fetch(`http://localhost:5000/manage-events/${event._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(eventData),
+        });
+
+        const data = await res.json();
+        // console.log(data)
+
+        if (res.ok) {
+            toast.success("Event updated successfully!");
+            form.reset();
+            setEventDate("");
+            router.push("/manage-events");
+        }
+        else {
+            toast.error(`Failed to create event: ${data.message}`);
+        }
+    };
+
+    return (
+        <Dialog>
+            <DialogTrigger>
+                <Button variant='outline'>
+                    <Pencil></Pencil>
+                    Edit
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="w-full min-w-xl max-h-[85vh] overflow-y-auto">
+                <DialogHeader>
+                    <DialogTitle className={'font-bold text-2xl text-green-800 text-center'}>Edit Event</DialogTitle>
+                    <DialogDescription>
+                        <form
+                            className="space-y-4 p-5 sm:p-6"
+                            onSubmit={handleSubmit}
+                        >
+                            {/* Event title */}
+                            <div>
+                                <label
+                                    htmlFor="title"
+                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                >
+                                    Event Title
+                                </label>
+
+                                <input
+                                    id="title"
+                                    name="title"
+                                    type="text"
+                                    placeholder="e.g. Clean Up Our Local Park"
+                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                />
+                            </div>
+
+                            {/* Description */}
+                            <div>
+                                <label
+                                    htmlFor="description"
+                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                >
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    placeholder="Describe your event, its purpose, and how people can participate..."
+                                    rows={3}
+                                    className="w-full resize-y rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                />
+                            </div>
+
+                            {/* Event type and location */}
+                            <div className="grid gap-4 sm:grid-cols-2">
+                                <div>
+                                    <label
+                                        htmlFor="eventType"
+                                        className="mb-2 block text-sm font-semibold text-gray-800"
+                                    >
+                                        Event Type
+                                    </label>
+
+                                    <select
+                                        id="eventType"
+                                        name="eventType"
+                                        defaultValue=""
+                                        className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                    >
+                                        <option value="" disabled>
+                                            Select event type
+                                        </option>
+
+                                        {eventTypes.map((type) => (
+                                            <option key={type} value={type}>
+                                                {type}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label
+                                        htmlFor="location"
+                                        className="mb-2 block text-sm font-semibold text-gray-800"
+                                    >
+                                        <span className="inline-flex items-center gap-1">
+                                            <MapPin size={15} />
+                                            Location
+                                        </span>{" "}
+                                    </label>
+
+                                    <input
+                                        id="location"
+                                        name="location"
+                                        type="text"
+                                        placeholder="e.g. Dhaka, Bangladesh"
+                                        className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Thumbnail URL */}
+                            <div>
+                                <label
+                                    htmlFor="thumbnail"
+                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                >
+                                    <span className="inline-flex items-center gap-1">
+                                        <ImagePlus size={16} />
+                                        Thumbnail Image URL
+                                    </span>{" "}
+                                </label>
+
+                                <input
+                                    id="thumbnail"
+                                    name="thumbnail"
+                                    type="url"
+                                    placeholder="https://example.com/event-image.jpg"
+                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                />
+
+                                <p className="mt-2 text-xs leading-5 text-gray-500">
+                                    Enter the URL of your event thumbnail.
+                                </p>
+                            </div>
+
+                            {/* Event date */}
+                            <div>
+                                <label
+                                    htmlFor="eventDate"
+                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                >
+                                    <span className="inline-flex items-center gap-1">
+                                        <CalendarDays size={16} />
+                                        Event Date
+                                    </span>{" "}
+                                </label>
+
+                                <input
+                                    id="eventDate"
+                                    name="eventDate"
+                                    type="date"
+                                    value={eventDate}
+                                    onChange={(e) => setEventDate(e.target.value)}
+                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                />
+
+                                <p className="mt-2 text-xs text-gray-500">
+                                    Choose a future date for your event.
+                                </p>
+                            </div>
+
+                            {/* Creator email placeholder */}
+                            <div className="rounded-xl border border-green-100 bg-green-50/70 p-4">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-green-800">
+                                    Event Organizer
+                                </p>
+
+                                <p className="mt-2 text-sm text-gray-500">
+                                    Your account email will appear here.
+                                </p>
+                            </div>
+
+                            {/* Buttons */}
+                            <div className="flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:justify-end">
+                                <Link
+                                    href="/manage-events"
+                                    className="inline-flex h-12 items-center justify-center rounded-xl border border-gray-200 px-6 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                                >
+                                    Cancel
+                                </Link>
+
+                                <button
+                                    type="submit"
+                                    className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-7 text-sm font-bold text-white transition hover:bg-green-900"
+                                >
+                                    Update Event
+                                    <Sparkles size={17} />
+                                </button>
+                            </div>
+                        </form>
+                    </DialogDescription>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
+    )
+}
