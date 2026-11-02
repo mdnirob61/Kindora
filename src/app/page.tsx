@@ -1,7 +1,7 @@
-import Banner from "@/components/Banner";
-import Features from "@/components/Features";
-import Gallery from "@/components/Gallery";
-import Newsletter from "@/components/Newsletter";
+import Banner from "@/components/home/Banner";
+import Features from "@/components/home/Features";
+import Gallery from "@/components/home/Gallery";
+import Newsletter from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
