@@ -32,10 +32,11 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
         }
 
         const data = {
+            ...event,
+            eventId: event._id,
             name: user.name,
             email: user.email,
             image: user.image,
-            ...event,
             joiningDate: new Date(),
         };
 
