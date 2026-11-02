@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function LoginForm() {
@@ -45,7 +45,8 @@ export default function LoginForm() {
 
             if (data) {
                 toast.success("Welcome back! Login successful.");
-                router.push("/");
+                router.push('/');
+                router.refresh();
             }
         } catch (error) {
             console.error(error);
@@ -160,11 +161,11 @@ export default function LoginForm() {
 
                                 {/* Divider */}
                                 <div className="relative flex items-center">
-                                    <div className="flex-grow border-t border-gray-200" />
+                                    <div className="grow border-t border-gray-200" />
                                     <span className="px-3 text-xs font-medium text-gray-400">
                                         OR CONTINUE WITH
                                     </span>
-                                    <div className="flex-grow border-t border-gray-200" />
+                                    <div className="grow border-t border-gray-200" />
                                 </div>
 
                                 {/* Google Button */}

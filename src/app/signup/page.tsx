@@ -116,7 +116,7 @@ export default function SignupForm() {
                         <FieldGroup className="gap-5">
 
                             <Field>
-                                <FieldLabel htmlFor="name">Full Name</FieldLabel>
+                                <FieldLabel htmlFor="name">Full Name <span className="text-red-500">*</span></FieldLabel>
                                 <Input
                                     id="name"
                                     type="text"
@@ -134,13 +134,12 @@ export default function SignupForm() {
                                     type="url"
                                     name="image"
                                     placeholder="https://example.com/image.jpg"
-                                    required
                                     className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
                                 />
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="email">Email Address</FieldLabel>
+                                <FieldLabel htmlFor="email">Email Address <span className="text-red-500">*</span></FieldLabel>
                                 <Input
                                     id="email"
                                     type="email"
@@ -155,7 +154,7 @@ export default function SignupForm() {
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="password">Password</FieldLabel>
+                                <FieldLabel htmlFor="password">Password <span className="text-red-500">*</span></FieldLabel>
                                 <Input
                                     id="password"
                                     type="password"
@@ -170,7 +169,7 @@ export default function SignupForm() {
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
+                                <FieldLabel htmlFor="confirmPassword">Confirm Password <span className="text-red-500">*</span></FieldLabel>
                                 <Input
                                     id="confirmPassword"
                                     type="password"
@@ -203,6 +202,28 @@ export default function SignupForm() {
                                     type="button"
                                     className="h-11 w-full rounded-lg border-gray-200 font-semibold text-[#123524] hover:bg-[#FAFAF5]"
                                 >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 48 48"
+                                        className="mr-2 h-5 w-5"
+                                    >
+                                        <path
+                                            fill="#FFC107"
+                                            d="M43.6 20.5H42V20H24v8h11.3A12 12 0 1 1 24 12a11.8 11.8 0 0 1 7.5 2.7l5.7-5.7A20 20 0 1 0 44 24c0-1.2-.1-2.3-.4-3.5Z"
+                                        />
+                                        <path
+                                            fill="#FF3D00"
+                                            d="m6.3 14.7 6.6 4.8A12 12 0 0 1 31.5 14.7l5.7-5.7A20 20 0 0 0 6.3 14.7Z"
+                                        />
+                                        <path
+                                            fill="#4CAF50"
+                                            d="M24 44a20 20 0 0 0 13.2-5l-6.1-5.2A12 12 0 0 1 12.8 28l-6.5 5A20 20 0 0 0 24 44Z"
+                                        />
+                                        <path
+                                            fill="#1976D2"
+                                            d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.2 5.8l6.1 5.2A20 20 0 0 0 44 24c0-1.2-.1-2.3-.4-3.5Z"
+                                        />
+                                    </svg>
                                     Sign up with Google
                                 </Button>
 
