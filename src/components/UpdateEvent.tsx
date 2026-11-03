@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IEvent } from "@/lib/types/event"
+import { useSession } from "@/lib/auth-client"
 
 const eventTypes = [
     "Cleanup",
@@ -26,8 +27,11 @@ const eventTypes = [
     "Other",
 ];
 
-export default function UpdateEventsPage({ event }: {event: IEvent}) {
+export default function UpdateEventsPage({ event }: { event: IEvent }) {
     const router = useRouter();
+
+    const { data: session } = useSession();
+    const user = session?.user;
 
     const [eventDate, setEventDate] = useState(event.eventDate);
 
@@ -44,6 +48,7 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
             location: formData.get("location") as string,
             thumbnail: formData.get("thumbnail") as string,
             eventDate: formData.get("eventDate") as string,
+            email: user?.email,
         };
 
         // Calculate today's date when the form is submitted.
@@ -109,6 +114,7 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
                                     id="title"
                                     name="title"
                                     type="text"
+                                    defaultValue={event.title}
                                     placeholder="e.g. Clean Up Our Local Park"
                                     className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
                                 />
@@ -126,6 +132,7 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
                                 <textarea
                                     id="description"
                                     name="description"
+                                    defaultValue={event.description}
                                     placeholder="Describe your event, its purpose, and how people can participate..."
                                     rows={3}
                                     className="w-full resize-y rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
@@ -175,6 +182,7 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
                                         id="location"
                                         name="location"
                                         type="text"
+                                        defaultValue={event.location}
                                         placeholder="e.g. Dhaka, Bangladesh"
                                         className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
                                     />
@@ -197,6 +205,7 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
                                     id="thumbnail"
                                     name="thumbnail"
                                     type="url"
+                                    defaultValue={event.thumbnail}
                                     placeholder="https://example.com/event-image.jpg"
                                     className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
                                 />
@@ -238,8 +247,8 @@ export default function UpdateEventsPage({ event }: {event: IEvent}) {
                                     Event Organizer
                                 </p>
 
-                                <p className="mt-2 text-sm text-gray-500">
-                                    Your account email will appear here.
+                                <p className="mt-2 text-sm font-medium text-gray-700">
+                                    {event.email}
                                 </p>
                             </div>
 

@@ -78,7 +78,8 @@ const Navbar = () => {
 
                     {user ? (
                         <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-2 rounded-full outline-none transition hover:bg-green-50 focus-visible:ring-2 focus-visible:ring-green-600">
+                            <DropdownMenuTrigger className="group relative flex items-center gap-2 rounded-full outline-none transition hover:bg-green-50 focus-visible:ring-2 focus-visible:ring-green-600">
+
                                 <Avatar className="h-10 w-10 border-2 border-green-100">
                                     <AvatarImage
                                         src={user.image ?? undefined}
@@ -89,9 +90,15 @@ const Navbar = () => {
                                     </AvatarFallback>
                                 </Avatar>
 
+                                {/* Display Name Tooltip */}
+                                <span className="pointer-events-none absolute -bottom-9 left-1/2 z-50 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-[#123524] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                                    {user.name}
+                                </span>
+
                                 <span className="hidden text-sm font-semibold text-gray-700 lg:block">
                                     {user.name}
                                 </span>
+
                             </DropdownMenuTrigger>
 
                             <DropdownMenuContent align="end" className="w-56 rounded-xl p-2">

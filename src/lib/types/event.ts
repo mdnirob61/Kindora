@@ -7,4 +7,5 @@ export interface IEvent {
     location: string;
     eventDate: string;
     joiningDate?: string | Date;
+    email?: string;
 }

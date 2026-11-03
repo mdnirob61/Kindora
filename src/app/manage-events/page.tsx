@@ -3,28 +3,49 @@ import Link from "next/link";
 import { CalendarDays, MapPin } from "lucide-react";
 import UpdateEventsPage from "@/components/UpdateEvent";
 import DeleteEventPage from "@/components/DeleteEvent";
-
-interface IEvent {
-    _id: string;
-    title: string;
-    description: string;
-    eventType: string;
-    thumbnail: string;
-    location: string;
-    eventDate: string;
-}
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { IEvent } from "@/lib/types/event";
 
 const ManageEventsPage = async () => {
-    let events: IEvent[] = [];
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
 
-    try {
-        const res = await fetch("");
+    const user = session?.user;
 
-        if (res.ok) {
-            events = await res.json();
+    let managedEvents: IEvent[] = [];
+
+    if (user?.email) {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/manage-events/${encodeURIComponent(user.email)}`,
+                {
+                    cache: "no-store",
+                }
+            );
+
+            const data = await response.json();
+
+            console.log("Logged-in user:", user.email);
+            console.log("Manage Events API response:", data);
+
+            if (response.ok) {
+                managedEvents = data;
+
+                managedEvents.sort(
+                    (a, b) =>
+                        new Date(a.eventDate).getTime() -
+                        new Date(b.eventDate).getTime()
+                );
+            } else {
+                console.error("API request failed:", data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch managed events:", error);
         }
-    } catch (error) {
-        console.error("Failed to fetch events:", error);
+    } else {
+        console.log("No logged-in user found!");
     }
 
     return (
@@ -72,13 +93,13 @@ const ManageEventsPage = async () => {
                     </div>
 
                     <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800">
-                        {events.length} Events
+                        {managedEvents.length} Events
                     </span>
                 </div>
 
-                {events.length > 0 ? (
+                {managedEvents.length > 0 ? (
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {events.map((event) => (
+                        {managedEvents.map((event) => (
                             <article
                                 key={event._id}
                                 className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"

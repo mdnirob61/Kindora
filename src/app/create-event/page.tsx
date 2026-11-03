@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useSession } from "@/lib/auth-client";
 
 const eventTypes = [
     "Cleanup",
@@ -24,6 +25,8 @@ const eventTypes = [
 ];
 
 const CreateEventPage = () => {
+    const { data: session } = useSession();
+    const user = session?.user;
 
     const router = useRouter();
 
@@ -42,7 +45,13 @@ const CreateEventPage = () => {
             location: formData.get("location") as string,
             thumbnail: formData.get("thumbnail") as string,
             eventDate: formData.get("eventDate") as string,
+            email: user?.email,
         };
+
+        if (!user?.email) {
+            toast.error("Please log in before creating an event.");
+            return;
+        }
 
         // Calculate today's date when the form is submitted.
         const today = new Date();
@@ -65,7 +74,7 @@ const CreateEventPage = () => {
         });
 
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
 
         if (res.ok) {
             toast.success("Event created successfully!");
@@ -275,8 +284,8 @@ const CreateEventPage = () => {
                                 Event Organizer
                             </p>
 
-                            <p className="mt-2 text-sm text-gray-500">
-                                Your account email will appear here.
+                            <p className="mt-2 text-sm font-medium text-gray-700">
+                                {user?.email || "Loading user information..."}
                             </p>
                         </div>
 
