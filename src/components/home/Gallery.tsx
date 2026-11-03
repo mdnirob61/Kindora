@@ -78,7 +78,7 @@ const Gallery = () => {
                 </div>
 
                 {/* Photo Grid */}
-                <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[240px] lg:grid-cols-4">
+                <div className="grid auto-rows-55 grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-60 lg:grid-cols-4">
                     {galleryImages.map((item, index) => (
                         <article
                             key={item.title}
@@ -101,7 +101,7 @@ const Gallery = () => {
                             />
 
                             {/* Image Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/90 dark:via-black/20" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/90 dark:via-black/20" />
 
                             {/* Category Label */}
                             <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/15 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">

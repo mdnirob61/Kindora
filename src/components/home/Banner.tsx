@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { ArrowRight, Heart, Plus } from "lucide-react";
 
@@ -6,13 +5,13 @@ const Banner = () => {
     return (
         <section className="bg-[#FAFAF5] px-4 pt-5 transition-colors duration-300 dark:bg-[#101812] sm:px-6 lg:px-8">
             <div
-                className="relative mx-auto flex min-h-[480px] max-w-7xl items-center overflow-hidden rounded-3xl bg-cover bg-center shadow-sm transition-shadow duration-300 dark:shadow-2xl dark:shadow-black/20 sm:min-h-[520px] lg:min-h-[580px]"
+                className="relative mx-auto flex min-h-120 max-w-7xl items-center overflow-hidden rounded-3xl bg-cover bg-center shadow-sm transition-shadow duration-300 dark:shadow-2xl dark:shadow-black/20 sm:min-h-130 lg:min-h-145"
                 style={{
                     backgroundImage: "url('/images/Banner.png')",
                 }}
             >
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/15 dark:from-black/90 dark:via-black/75 dark:to-black/35" />
+                <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/15 dark:from-black/90 dark:via-black/75 dark:to-black/35" />
 
                 {/* Additional dark theme overlay */}
                 <div className="absolute inset-0 bg-green-950/5 dark:bg-green-950/20" />

@@ -65,7 +65,7 @@ const Newsletter = () => {
                     </div>
 
                     {/* Right Newsletter Form */}
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-black/10 backdrop-blur-sm transition-colors duration-300 dark:border-lime-300/10 dark:bg-white/[0.04] sm:p-8">
+                    <div className="rounded-2xl border border-white/10 bg-white/6 p-5 shadow-2xl shadow-black/10 backdrop-blur-sm transition-colors duration-300 dark:border-lime-300/10 dark:bg-white/4 sm:p-8">
 
                         <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-lime-300 text-green-950">
                             <Mail size={23} />
