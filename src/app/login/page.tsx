@@ -54,6 +54,13 @@ export default function LoginForm() {
         }
     };
 
+    const handleGoogleSignIn = async () => {
+        const data = await signIn.social({
+            provider: "google",
+        });
+        // console.log(data)
+    }
+
     return (
         <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FAFAF5] px-4 py-12">
 
@@ -170,6 +177,7 @@ export default function LoginForm() {
 
                                 {/* Google Button */}
                                 <Button
+                                    onClick={handleGoogleSignIn}
                                     variant="outline"
                                     type="button"
                                     className="h-12 w-full rounded-lg border-gray-200 font-semibold text-[#123524] transition-colors hover:bg-[#FAFAF5]"

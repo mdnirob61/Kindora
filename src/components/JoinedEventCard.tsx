@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 
 const JoinedEventCard = ({ event }: { event: IEvent }) => {
     const router = useRouter();
-    
+
     const handleRemoveEvent = async () => {
 
         try {
@@ -53,10 +53,26 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
                         </div>
                     )}
 
-                    <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold text-green-800 shadow-sm">
+                    {/* Dark transparent overlay */}
+                    <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/40 to-transparent px-4 pb-4 pt-10">
+                        <p className="flex items-center gap-2 text-sm font-medium text-white">
+                            <span aria-hidden="true">📅</span>
+                            {event.eventDate
+                                ? new Date(event.eventDate).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                })
+                                : "Date not available"}
+                        </p>
+                    </div>
+
+                    {/* Event Type */}
+                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-green-800 shadow-sm">
                         {event.eventType}
                     </span>
                 </div>
+
 
                 <div className="p-5">
                     <h3 className="line-clamp-1 text-lg font-bold text-gray-900 transition group-hover:text-green-800">
@@ -76,14 +92,15 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
                         </p>
 
                         <p className="flex items-center gap-2">
-                            <span aria-hidden="true">📅</span>
-                            {event.eventDate
-                                ? new Date(event.eventDate).toLocaleDateString("en-US", {
+                            <span className="font-bold">Joined on:</span>
+                            {event.joiningDate
+                                ? new Date(event.joiningDate).toLocaleDateString("en-US", {
                                     month: "short",
                                     day: "numeric",
                                     year: "numeric",
                                 })
                                 : "Date not available"}
+
                         </p>
                     </div>
 

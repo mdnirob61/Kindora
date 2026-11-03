@@ -19,7 +19,7 @@ import {
     Menu,
     Home,
 } from "lucide-react";
-import { authClient, signOut } from "@/lib/auth-client";
+import { signOut, useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Button } from "./ui/button";
@@ -27,7 +27,7 @@ import { Button } from "./ui/button";
 const Navbar = () => {
     const router = useRouter();
 
-    const { data: session } = authClient.useSession();
+    const { data: session } = useSession();
 
     const user = session?.user;
 

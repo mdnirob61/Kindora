@@ -14,7 +14,7 @@ import {
     FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { signUp } from "@/lib/auth-client"
+import { signIn, signUp } from "@/lib/auth-client"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
@@ -77,6 +77,13 @@ export default function SignupForm() {
             toast.error("Something went wrong. Please try again.");
         }
     };
+
+    const handleGoogleSignUp = async () => {
+        const data = await signIn.social({
+            provider: "google",
+        });
+        // console.log(data)
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#FAFAF5] px-4 py-12">
@@ -198,6 +205,7 @@ export default function SignupForm() {
                                 </div>
 
                                 <Button
+                                    onClick={handleGoogleSignUp}
                                     variant="outline"
                                     type="button"
                                     className="h-11 w-full rounded-lg border-gray-200 font-semibold text-[#123524] hover:bg-[#FAFAF5]"
