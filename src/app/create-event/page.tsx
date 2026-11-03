@@ -61,7 +61,7 @@ const CreateEventPage = () => {
         ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
         if (!eventData.eventDate || eventData.eventDate <= minDate) {
-            alert("Please select a future date.");
+            toast.error("Please select a future date.");
             return;
         }
 

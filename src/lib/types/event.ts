@@ -8,4 +8,5 @@ export interface IEvent {
     eventDate: string;
     joiningDate?: string | Date;
     email?: string;
+    eventId?: string;
 }

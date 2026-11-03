@@ -29,6 +29,7 @@ const eventTypes = [
 
 export default function UpdateEventsPage({ event }: { event: IEvent }) {
     const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
 
     const { data: session } = useSession();
     const user = session?.user;
@@ -76,8 +77,10 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
 
         if (res.ok) {
             toast.success("Event updated successfully!");
+            setIsOpen(false);
             form.reset();
             setEventDate("");
+            router.refresh();
             router.push("/manage-events");
         }
         else {
@@ -86,7 +89,7 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
     };
 
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger>
                 <Button variant='outline' className="dark:border-green-800 dark:bg-[#151D18] dark:text-gray-200 dark:hover:bg-[#1C2920]">
                     <Pencil></Pencil>

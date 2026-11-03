@@ -102,7 +102,7 @@ const ManageEventsPage = async () => {
                         {managedEvents.map((event) => (
                             <article
                                 key={event._id}
-                                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-green-900/50 dark:bg-[#151D18]"
+                                className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-green-900/50 dark:bg-[#151D18]"
                             >
                                 {/* Event Image */}
                                 <div className="relative h-52 bg-gray-100 dark:bg-[#1C2920]">
@@ -122,7 +122,7 @@ const ManageEventsPage = async () => {
                                 </div>
 
                                 {/* Event Details */}
-                                <div className="p-5">
+                                <div className="flex flex-1 flex-col p-5">
                                     <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800 dark:bg-green-900/40 dark:text-lime-400">
                                         {event.eventType}
                                     </span>
@@ -141,7 +141,7 @@ const ManageEventsPage = async () => {
                                             {event.location}
                                         </p>
 
-                                        <p className="flex items-center gap-2">
+                                        <p className="flex items-center gap-2 pb-2">
                                             <CalendarDays size={16} />
                                             {new Date(event.eventDate).toLocaleDateString(
                                                 "en-US",
@@ -155,7 +155,7 @@ const ManageEventsPage = async () => {
                                     </div>
 
                                     {/* Action Buttons */}
-                                    <div className="mt-5 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-green-900/50">
+                                    <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4 dark:border-green-900/50">
                                         <Link
                                             href={`/upcoming-events/${event._id}`}
                                             className="flex items-center justify-center rounded-lg bg-green-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"

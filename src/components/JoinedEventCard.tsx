@@ -35,7 +35,7 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
         <div>
             <article
                 key={event._id}
-                className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-green-900/50 dark:bg-[#151D18]"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-green-900/50 dark:bg-[#151D18]"
             >
 
                 <div className="relative h-52 overflow-hidden bg-gray-100 dark:bg-[#1C2920]">
@@ -74,7 +74,7 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
                 </div>
 
 
-                <div className="p-5">
+                <div className="flex flex-1 flex-col p-5">
                     <h3 className="line-clamp-1 text-lg font-bold text-gray-900 transition group-hover:text-green-800 dark:text-gray-100 dark:group-hover:text-lime-400">
                         {event.title}
                     </h3>
@@ -104,10 +104,10 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
                         </p>
                     </div>
 
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="mt-auto flex items-center justify-between gap-3">
                         <div className="mt-5 border-t border-gray-100 pt-4 dark:border-green-900/50">
                             <Link
-                                href={`/upcoming-events/${event._id}`}
+                                href={`/upcoming-events/${event.eventId}`}
                                 className="block"
                             >
                                 <span className="text-sm font-bold text-green-800 dark:text-lime-400">
@@ -115,9 +115,12 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
                                 </span>
                             </Link>
                         </div>
-                        <Button variant='destructive' className="mt-8 border-t border-gray-100 dark:border-green-900/50" onClick={handleRemoveEvent}>
-                            <Trash2></Trash2> Remove Event
-                        </Button>
+                        <div className="mt-5 border-t border-gray-100 pt-4 dark:border-green-900/50">
+                            <Button variant='destructive' className="mt-0 shrink-0" onClick={handleRemoveEvent}>
+                                <Trash2></Trash2> Remove Event
+                            </Button>
+                        </div>
+
                     </div>
                 </div>
             </article>
