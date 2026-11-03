@@ -12,7 +12,7 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
     const { id } = await params;
 
     const res = await fetch(`http://localhost:5000/upcoming-event/${id}`);
-    console.log(res)
+    
     if (!res.ok) notFound();
     const event: IEvent = await res.json();
 

@@ -41,11 +41,11 @@ const Footer = () => {
 
                         {/* Email */}
                         <a
-                            href="mailto:hello@kindora.com"
+                            href="mailto:nirobstudy2004@gmail.com"
                             className="mt-3 inline-flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-lime-300"
                         >
                             <Mail size={17} className="text-lime-300" />
-                            hello@kindora.com
+                            nirobstudy2004@gmail.com
                         </a>
                     </div>
 

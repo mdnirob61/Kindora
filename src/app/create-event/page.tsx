@@ -12,6 +12,7 @@ import {
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const eventTypes = [
     "Cleanup",
@@ -65,16 +66,19 @@ const CreateEventPage = () => {
             return;
         }
 
+        const token = await getTokenFromClient();
+
         const res = await fetch(`http://localhost:5000/create-event`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(eventData)
         });
 
-        const data = await res.json();
-        // console.log(data)
+        const result = await res.json();
+        // console.log(result)
 
         if (res.ok) {
             toast.success("Event created successfully!");
@@ -83,7 +87,7 @@ const CreateEventPage = () => {
             router.push("/upcoming-events");
         }
         else {
-            toast.error(`Failed to create event: ${data.message}`);
+            toast.error(`Failed to create event: ${result.message}`);
         }
     };
 

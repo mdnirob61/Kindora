@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
 import JoinedEventCard from "@/components/JoinedEventCard";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const JoinedEventsPage = async () => {
     const session = await auth.api.getSession({
@@ -11,12 +12,17 @@ const JoinedEventsPage = async () => {
     const user = session?.user;
     let joinedEvents: IEvent[] = [];
 
+    const token = await getTokenFromServer();
+
     try {
         const response = await fetch(
             `http://localhost:5000/joined-events/${user?.email}`,
             {
                 cache: "no-store",
-            }
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            },
         );
 
         if (response.ok) {

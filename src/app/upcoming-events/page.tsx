@@ -9,8 +9,15 @@ const UpcomingEventsPage = async () => {
         const response = await fetch(`http://localhost:5000/upcoming-events`);
 
         if (response.ok) {
-            events = await response.json();
-            // console.log(events);
+            const allEvents: IEvent[] = await response.json();
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            events = allEvents.filter((event) => {
+                const eventDate = new Date(`${event.eventDate.slice(0, 10)}T00:00:00`);
+                return eventDate > today;
+            });
         }
     } catch (error) {
         console.error("Failed to fetch events:", error);

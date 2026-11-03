@@ -6,6 +6,7 @@ import DeleteEventPage from "@/components/DeleteEvent";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { IEvent } from "@/lib/types/event";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const ManageEventsPage = async () => {
     const session = await auth.api.getSession({
@@ -16,19 +17,21 @@ const ManageEventsPage = async () => {
 
     let managedEvents: IEvent[] = [];
 
+    const token = await getTokenFromServer();
+
     if (user?.email) {
         try {
             const response = await fetch(
-                `http://localhost:5000/manage-events/${encodeURIComponent(user.email)}`,
+                `http://localhost:5000/manage-events/${user.email}`,
                 {
                     cache: "no-store",
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
                 }
             );
 
             const data = await response.json();
-
-            console.log("Logged-in user:", user.email);
-            console.log("Manage Events API response:", data);
 
             if (response.ok) {
                 managedEvents = data;

@@ -6,16 +6,22 @@ import Image from "next/image";
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { getTokenFromClient } from '@/lib/getTokenFromClient';
 
 const JoinedEventCard = ({ event }: { event: IEvent }) => {
     const router = useRouter();
 
     const handleRemoveEvent = async () => {
+        const token = await getTokenFromClient();
+
         try {
             const response = await fetch(
                 `http://localhost:5000/joined-events/${event._id}`,
                 {
                     method: "DELETE",
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
                 }
             );
 

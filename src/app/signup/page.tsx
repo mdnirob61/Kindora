@@ -33,6 +33,18 @@ export default function SignupForm() {
         const password = formData.get("password") as string;
         const confirmPassword = formData.get("confirmPassword") as string;
 
+        if (!name.trim()) {
+            toast.error("Please enter your name.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email.trim())) {
+            toast.error("Please enter a valid email address.");
+            return;
+        }
+
         // Password validation
         if (password.length < 6) {
             toast.error("Password must be at least 6 characters long.");

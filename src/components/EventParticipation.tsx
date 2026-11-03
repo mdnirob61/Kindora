@@ -7,10 +7,9 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { HeartHandshake, Users } from "lucide-react";
 import { IEvent } from "@/lib/types/event";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const EventParticipation = ({ event }: { event: IEvent }) => {
-    // console.log(event)
-
     const router = useRouter();
 
     const { data: session } = authClient.useSession();
@@ -41,11 +40,14 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
             joiningDate: new Date(),
         };
 
+        const token = await getTokenFromClient();
+
         try {
             const res = await fetch("http://localhost:5000/joined-event", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(data),
             });
@@ -73,27 +75,27 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
     };
 
     return (
-        <div className="mt-10 border-t border-gray-100 pt-8 dark:border-green-900/50">
+        <div className="mt-8 border-t border-gray-100 pt-6 sm:mt-10 sm:pt-8 dark:border-green-900/50">
 
-            <div className="flex flex-col gap-5 rounded-2xl border border-[#E5E7DF] bg-[#FAFAF5] p-5 transition-colors duration-300 dark:border-green-900/60 dark:bg-[#1C2920] sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="flex flex-col gap-5 rounded-2xl border border-[#E5E7DF] bg-[#FAFAF5] p-4 transition-colors duration-300 sm:p-5 md:p-6 dark:border-green-900/60 dark:bg-[#1C2920]">
 
-                {/* Volunteer Information */}
                 <form
                     onSubmit={handleJoinEvent}
-                    className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-100"
+                    className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                 >
-                    <div className="flex items-center gap-4">
+                    {/* Volunteer Information */}
+                    <div className="flex items-center gap-3 sm:gap-4">
 
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#E7F2E4] text-[#166534] dark:bg-green-900/50 dark:text-lime-400">
-                            <Users size={27} />
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#E7F2E4] text-[#166534] sm:h-14 sm:w-14 sm:rounded-2xl dark:bg-green-900/50 dark:text-lime-400">
+                            <Users size={24} className="sm:h-6.75 sm:w-6.75" />
                         </div>
 
-                        <div>
-                            <h3 className="text-lg font-bold text-[#123524] dark:text-gray-100">
+                        <div className="min-w-0">
+                            <h3 className="text-base font-bold text-[#123524] sm:text-lg dark:text-gray-100">
                                 Be Part of the Change
                             </h3>
 
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            <p className="mt-1 text-xs text-gray-500 sm:text-sm dark:text-gray-400">
                                 {isJoined
                                     ? "Thank you for being part of this event!"
                                     : "Be part of something meaningful."}
@@ -103,34 +105,23 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3">
-
+                    <div className="w-full sm:w-auto">
                         <Button
                             type="submit"
                             disabled={isJoined}
-                            className={`h-12 rounded-xl px-6 font-semibold shadow-md transition-all sm:px-7 ${isJoined
-                                    ? "cursor-not-allowed bg-gray-400 text-white opacity-80 dark:bg-gray-600 dark:text-gray-200"
-                                    : "bg-[#166534] text-white shadow-[#166534]/15 hover:bg-[#123524] dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
+                            className={`h-11 w-full rounded-xl px-5 text-sm font-semibold shadow-md transition-all sm:h-12 sm:w-auto sm:px-7 sm:text-base ${isJoined
+                                ? "cursor-not-allowed bg-gray-400 text-white opacity-80 dark:bg-gray-600 dark:text-gray-200"
+                                : "bg-[#166534] text-white shadow-[#166534]/15 hover:bg-[#123524] dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                                 }`}
                         >
-                            {isJoined ? (
-                                <>
-                                    <HeartHandshake className="mr-2 h-5 w-5" />
-                                    Joined
-                                </>
-                            ) : (
-                                <>
-                                    <HeartHandshake className="mr-2 h-5 w-5" />
-                                    Join This Event
-                                </>
-                            )}
+                            <HeartHandshake className="mr-2 h-5 w-5" />
+                            {isJoined ? "Joined" : "Join This Event"}
                         </Button>
-
                     </div>
                 </form>
             </div>
 
-            <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
+            <p className="mt-3 text-center text-[11px] text-gray-400 sm:mt-4 sm:text-xs dark:text-gray-500">
                 Together, small actions create meaningful change.
             </p>
 

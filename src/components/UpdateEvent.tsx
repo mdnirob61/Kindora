@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IEvent } from "@/lib/types/event"
 import { useSession } from "@/lib/auth-client"
+import { getTokenFromClient } from "@/lib/getTokenFromClient"
 
 const eventTypes = [
     "Cleanup",
@@ -64,16 +65,18 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
             return;
         }
 
+        const token = await getTokenFromClient();
+
         const res = await fetch(`http://localhost:5000/manage-events/${event._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(eventData),
         });
 
         const data = await res.json();
-        // console.log(data)
 
         if (res.ok) {
             toast.success("Event updated successfully!");
@@ -84,7 +87,7 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
             router.push("/manage-events");
         }
         else {
-            toast.error(`Failed to create event: ${data.message}`);
+            toast.error(`Failed to update event: ${data.message}`);
         }
     };
 
@@ -159,7 +162,7 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
                                     <select
                                         id="eventType"
                                         name="eventType"
-                                        defaultValue=""
+                                        defaultValue={event.eventType}
                                         className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                                     >
                                         <option value="" disabled>
