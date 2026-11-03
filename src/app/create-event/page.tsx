@@ -88,12 +88,12 @@ const CreateEventPage = () => {
     };
 
     return (
-        <main className="min-h-screen bg-[#FAFAF5] px-4 py-10 sm:px-6 lg:px-8">
+        <main className="min-h-screen bg-[#FAFAF5] px-4 py-10 transition-colors duration-300 sm:px-6 lg:px-8 dark:bg-[#101812]">
             <div className="mx-auto max-w-5xl">
                 {/* Back link */}
                 <Link
                     href="/upcoming-events"
-                    className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-green-800 transition hover:text-green-950"
+                    className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-green-800 transition hover:text-green-950 dark:text-lime-400 dark:hover:text-lime-300"
                 >
                     <ArrowLeft size={17} />
                     Back to Upcoming Events
@@ -101,25 +101,25 @@ const CreateEventPage = () => {
 
                 {/* Page heading */}
                 <div className="mb-8">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-800">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-800 dark:bg-green-900/40 dark:text-lime-400">
                         <Sparkles size={16} />
                         Make a Difference
                     </span>
 
-                    <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl lg:text-5xl">
+                    <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-green-950 sm:text-4xl lg:text-5xl dark:text-gray-100">
                         Create an Event
                     </h1>
 
-                    <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+                    <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base dark:text-gray-400">
                         Bring people together for a good cause. Create a community
                         event and inspire others to make a positive change.
                     </p>
                 </div>
 
                 {/* Form card — UI only */}
-                <div className="overflow-hidden rounded-3xl border border-green-900/10 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-3xl border border-green-900/10 bg-white shadow-sm dark:border-green-900/50 dark:bg-[#151D18]">
                     {/* Card header */}
-                    <div className="bg-[#123524] px-6 py-6 sm:px-9">
+                    <div className="bg-[#123524] px-6 py-6 sm:px-9 dark:bg-[#1C2920]">
                         <h2 className="text-xl font-bold text-white">
                             Event Information
                         </h2>
@@ -137,7 +137,7 @@ const CreateEventPage = () => {
                         <div>
                             <label
                                 htmlFor="title"
-                                className="mb-2 block text-sm font-semibold text-gray-800"
+                                className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                             >
                                 Event Title <span className="text-red-500">*</span>
                             </label>
@@ -148,7 +148,7 @@ const CreateEventPage = () => {
                                 type="text"
                                 placeholder="e.g. Clean Up Our Local Park"
                                 required
-                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                             />
                         </div>
 
@@ -156,7 +156,7 @@ const CreateEventPage = () => {
                         <div>
                             <label
                                 htmlFor="description"
-                                className="mb-2 block text-sm font-semibold text-gray-800"
+                                className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                             >
                                 Description <span className="text-red-500">*</span>
                             </label>
@@ -167,7 +167,7 @@ const CreateEventPage = () => {
                                 placeholder="Describe your event, its purpose, and how people can participate..."
                                 rows={5}
                                 required
-                                className="w-full resize-y rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                className="w-full resize-y rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                             />
                         </div>
 
@@ -176,7 +176,7 @@ const CreateEventPage = () => {
                             <div>
                                 <label
                                     htmlFor="eventType"
-                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                    className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                                 >
                                     Event Type <span className="text-red-500">*</span>
                                 </label>
@@ -186,7 +186,7 @@ const CreateEventPage = () => {
                                     name="eventType"
                                     defaultValue=""
                                     required
-                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                                 >
                                     <option value="" disabled>
                                         Select event type
@@ -203,7 +203,7 @@ const CreateEventPage = () => {
                             <div>
                                 <label
                                     htmlFor="location"
-                                    className="mb-2 block text-sm font-semibold text-gray-800"
+                                    className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                                 >
                                     <span className="inline-flex items-center gap-1">
                                         <MapPin size={15} />
@@ -218,7 +218,7 @@ const CreateEventPage = () => {
                                     type="text"
                                     placeholder="e.g. Dhaka, Bangladesh"
                                     required
-                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                    className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                                 />
                             </div>
                         </div>
@@ -227,7 +227,7 @@ const CreateEventPage = () => {
                         <div>
                             <label
                                 htmlFor="thumbnail"
-                                className="mb-2 block text-sm font-semibold text-gray-800"
+                                className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                             >
                                 <span className="inline-flex items-center gap-1">
                                     <ImagePlus size={16} />
@@ -242,10 +242,10 @@ const CreateEventPage = () => {
                                 type="url"
                                 placeholder="https://example.com/event-image.jpg"
                                 required
-                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition placeholder:text-gray-400 focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                             />
 
-                            <p className="mt-2 text-xs leading-5 text-gray-500">
+                            <p className="mt-2 text-xs leading-5 text-gray-500 dark:text-gray-500">
                                 Enter the URL of your event thumbnail.
                             </p>
                         </div>
@@ -254,7 +254,7 @@ const CreateEventPage = () => {
                         <div>
                             <label
                                 htmlFor="eventDate"
-                                className="mb-2 block text-sm font-semibold text-gray-800"
+                                className="mb-2 block text-sm font-semibold text-gray-800 dark:text-gray-200"
                             >
                                 <span className="inline-flex items-center gap-1">
                                     <CalendarDays size={16} />
@@ -270,37 +270,37 @@ const CreateEventPage = () => {
                                 value={eventDate}
                                 onChange={(e) => setEventDate(e.target.value)}
                                 required
-                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10"
+                                className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none transition focus:border-green-700 focus:ring-4 focus:ring-green-700/10 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:focus:border-lime-400 dark:focus:ring-lime-400/10"
                             />
 
-                            <p className="mt-2 text-xs text-gray-500">
+                            <p className="mt-2 text-xs text-gray-500 dark:text-gray-500">
                                 Choose a future date for your event.
                             </p>
                         </div>
 
                         {/* Creator email placeholder */}
-                        <div className="rounded-xl border border-green-100 bg-green-50/70 p-4">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-green-800">
+                        <div className="rounded-xl border border-green-100 bg-green-50/70 p-4 dark:border-green-900/50 dark:bg-[#1C2920]">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-green-800 dark:text-lime-400">
                                 Event Organizer
                             </p>
 
-                            <p className="mt-2 text-sm font-medium text-gray-700">
+                            <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {user?.email || "Loading user information..."}
                             </p>
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:justify-end">
+                        <div className="flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:justify-end dark:border-green-900/50">
                             <Link
                                 href="/upcoming-events"
-                                className="inline-flex h-12 items-center justify-center rounded-xl border border-gray-200 px-6 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                                className="inline-flex h-12 items-center justify-center rounded-xl border border-gray-200 px-6 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-green-900/60 dark:text-gray-300 dark:hover:bg-[#1C2920]"
                             >
                                 Cancel
                             </Link>
 
                             <button
                                 type="submit"
-                                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-7 text-sm font-bold text-white transition hover:bg-green-900"
+                                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-7 text-sm font-bold text-white transition hover:bg-green-900 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                             >
                                 Create Event
                                 <Sparkles size={17} />
@@ -309,7 +309,7 @@ const CreateEventPage = () => {
                     </form>
                 </div>
 
-                <p className="mt-6 text-center text-sm text-gray-500">
+                <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
                     Every small act of kindness makes our community stronger. 💚
                 </p>
             </div>

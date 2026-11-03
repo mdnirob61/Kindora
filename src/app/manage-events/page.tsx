@@ -49,21 +49,21 @@ const ManageEventsPage = async () => {
     }
 
     return (
-        <main className="min-h-screen bg-[#FAFAF5]">
+        <main className="min-h-screen bg-[#FAFAF5] transition-colors duration-300 dark:bg-[#101812]">
             {/* Header */}
-            <section className="border-b border-green-100 bg-white">
+            <section className="border-b border-green-100 bg-white dark:border-green-900/50 dark:bg-[#151D18]">
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-                    <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-green-800">
+                    <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-green-800 dark:text-lime-400">
                         Your Contributions
                     </p>
 
                     <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
                         <div>
-                            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-gray-100">
                                 Manage Events
                             </h1>
 
-                            <p className="mt-4 max-w-2xl leading-7 text-gray-500">
+                            <p className="mt-4 max-w-2xl leading-7 text-gray-500 dark:text-gray-400">
                                 Keep your community initiatives organized and manage the
                                 events you&apos;ve created.
                             </p>
@@ -71,7 +71,7 @@ const ManageEventsPage = async () => {
 
                         <Link
                             href="/create-event"
-                            className="w-fit rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                            className="w-fit rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                         >
                             + Create New Event
                         </Link>
@@ -83,16 +83,16 @@ const ManageEventsPage = async () => {
             <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div className="mb-8 flex items-center justify-between gap-4">
                     <div>
-                        <h2 className="text-2xl font-bold text-gray-900">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                             Your Created Events
                         </h2>
 
-                        <p className="mt-2 text-sm text-gray-500">
+                        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                             All the events you have organized.
                         </p>
                     </div>
 
-                    <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800">
+                    <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800 dark:bg-green-900/40 dark:text-lime-400">
                         {managedEvents.length} Events
                     </span>
                 </div>
@@ -102,10 +102,10 @@ const ManageEventsPage = async () => {
                         {managedEvents.map((event) => (
                             <article
                                 key={event._id}
-                                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-green-900/50 dark:bg-[#151D18]"
                             >
                                 {/* Event Image */}
-                                <div className="relative h-52 bg-gray-100">
+                                <div className="relative h-52 bg-gray-100 dark:bg-[#1C2920]">
                                     {event.thumbnail ? (
                                         <Image
                                             src={event.thumbnail}
@@ -115,7 +115,7 @@ const ManageEventsPage = async () => {
                                             className="object-cover"
                                         />
                                     ) : (
-                                        <div className="flex h-full items-center justify-center text-sm text-gray-400">
+                                        <div className="flex h-full items-center justify-center text-sm text-gray-400 dark:text-gray-500">
                                             No image available
                                         </div>
                                     )}
@@ -123,19 +123,19 @@ const ManageEventsPage = async () => {
 
                                 {/* Event Details */}
                                 <div className="p-5">
-                                    <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">
+                                    <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800 dark:bg-green-900/40 dark:text-lime-400">
                                         {event.eventType}
                                     </span>
 
-                                    <h3 className="mt-4 text-lg font-bold text-gray-900">
+                                    <h3 className="mt-4 text-lg font-bold text-gray-900 dark:text-gray-100">
                                         {event.title}
                                     </h3>
 
-                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-500">
+                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
                                         {event.description}
                                     </p>
 
-                                    <div className="mt-4 space-y-2 text-sm text-gray-600">
+                                    <div className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
                                         <p className="flex items-center gap-2">
                                             <MapPin size={16} />
                                             {event.location}
@@ -155,12 +155,12 @@ const ManageEventsPage = async () => {
                                     </div>
 
                                     {/* Action Buttons */}
-                                    <div className="mt-5 grid grid-cols-3 gap-2 border-t border-gray-100 pt-4">
+                                    <div className="mt-5 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-green-900/50">
                                         <Link
                                             href={`/upcoming-events/${event._id}`}
-                                            className="flex items-center justify-center rounded-lg bg-green-800 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700"
+                                            className="flex items-center justify-center rounded-lg bg-green-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                                         >
-                                            View
+                                            View Event
                                         </Link>
 
                                         <UpdateEventsPage event={event} />
@@ -172,21 +172,21 @@ const ManageEventsPage = async () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-16 text-center">
+                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-16 text-center dark:border-green-900/60 dark:bg-[#151D18]">
                         <div className="mb-5 text-5xl">📅</div>
 
-                        <h3 className="text-xl font-bold text-gray-900">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                             You haven&apos;t created any events yet
                         </h3>
 
-                        <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-gray-500">
+                        <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-gray-500 dark:text-gray-400">
                             Start something meaningful in your community. Create your
                             first event and invite others to participate.
                         </p>
 
                         <Link
                             href="/create-event"
-                            className="mt-6 inline-flex rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                            className="mt-6 inline-flex rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                         >
                             Create Your First Event
                         </Link>

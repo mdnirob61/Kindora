@@ -10,10 +10,11 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="bg-[#10271D] text-white">
+        <footer className="bg-[#10271D] text-white transition-colors duration-300 dark:bg-[#0B1510]">
             {/* Main Footer */}
             <div className="mx-auto max-w-7xl px-5 pb-12 pt-16 sm:px-8 lg:px-10 lg:pt-20">
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+
                     {/* Brand */}
                     <div className="lg:col-span-5">
                         <Link href="/" className="inline-flex items-center gap-2">
@@ -56,34 +57,22 @@ const Footer = () => {
 
                         <ul className="mt-5 space-y-4 text-sm text-slate-300">
                             <li>
-                                <Link
-                                    href="/"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/" className="transition-colors hover:text-lime-300">
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/upcoming-events"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/upcoming-events" className="transition-colors hover:text-lime-300">
                                     Upcoming Events
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/create-event"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/create-event" className="transition-colors hover:text-lime-300">
                                     Create an Event
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/manage-events"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/manage-events" className="transition-colors hover:text-lime-300">
                                     Manage Events
                                 </Link>
                             </li>
@@ -98,26 +87,17 @@ const Footer = () => {
 
                         <ul className="mt-5 space-y-4 text-sm text-slate-300">
                             <li>
-                                <Link
-                                    href="/joined-events"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/joined-events" className="transition-colors hover:text-lime-300">
                                     My Joined Events
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/login"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/login" className="transition-colors hover:text-lime-300">
                                     Sign In
                                 </Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/signup"
-                                    className="transition-colors hover:text-lime-300"
-                                >
+                                <Link href="/signup" className="transition-colors hover:text-lime-300">
                                     Join Kindora
                                 </Link>
                             </li>

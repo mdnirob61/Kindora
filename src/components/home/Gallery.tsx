@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Camera } from "lucide-react";
@@ -42,22 +43,26 @@ const galleryImages = [
 
 const Gallery = () => {
     return (
-        <section className="bg-[#FAFAF5] px-4 py-20 sm:px-6 lg:px-8">
+        <section className="bg-[#FAFAF5] px-4 py-20 transition-colors duration-300 dark:bg-[#101812] sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
+
                 {/* Section Heading */}
                 <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
                     <div className="max-w-2xl">
-                        <span className="inline-flex items-center gap-2 rounded-full bg-lime-100 px-4 py-2 text-sm font-semibold text-green-800">
+
+                        <span className="inline-flex items-center gap-2 rounded-full bg-lime-100 px-4 py-2 text-sm font-semibold text-green-800 dark:bg-lime-900/40 dark:text-lime-300">
                             <Camera size={16} />
                             Moments That Matter
                         </span>
 
-                        <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                        <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-gray-100 sm:text-4xl lg:text-5xl">
                             Kindness in{" "}
-                            <span className="text-green-700">Action.</span>
+                            <span className="text-green-700 dark:text-lime-400">
+                                Action.
+                            </span>
                         </h2>
 
-                        <p className="mt-4 max-w-xl text-base leading-7 text-slate-500">
+                        <p className="mt-4 max-w-xl text-base leading-7 text-slate-500 dark:text-gray-400">
                             Every picture tells a story of people coming together,
                             supporting one another, and making their communities better.
                         </p>
@@ -65,7 +70,7 @@ const Gallery = () => {
 
                     <Link
                         href="/upcoming-events"
-                        className="inline-flex w-fit items-center gap-2 rounded-full border border-green-800/20 px-5 py-3 text-sm font-semibold text-green-800 transition hover:bg-green-800 hover:text-white"
+                        className="inline-flex w-fit items-center gap-2 rounded-full border border-green-800/20 px-5 py-3 text-sm font-semibold text-green-800 transition hover:bg-green-800 hover:text-white dark:border-lime-400/30 dark:text-lime-400 dark:hover:bg-lime-400 dark:hover:text-green-950"
                     >
                         Explore Events
                         <ArrowUpRight size={18} />
@@ -77,8 +82,11 @@ const Gallery = () => {
                     {galleryImages.map((item, index) => (
                         <article
                             key={item.title}
-                            className={`group relative isolate overflow-hidden rounded-2xl bg-slate-200 ${item.size} ${index === 0 ? "sm:col-span-2 sm:row-span-2" : ""
-                                }`}
+                            className={`group relative isolate overflow-hidden rounded-2xl bg-slate-200 dark:bg-[#1C2920] ${item.size} ${
+                                index === 0
+                                    ? "sm:col-span-2 sm:row-span-2"
+                                    : ""
+                            }`}
                         >
                             <Image
                                 src={item.image}
@@ -93,7 +101,7 @@ const Gallery = () => {
                             />
 
                             {/* Image Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/90 dark:via-black/20" />
 
                             {/* Category Label */}
                             <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/15 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
@@ -121,24 +129,27 @@ const Gallery = () => {
                 </div>
 
                 {/* Bottom Message */}
-                <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-green-900/10 bg-white p-6 sm:flex-row sm:px-8">
+                <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-green-900/10 bg-white p-6 transition-colors duration-300 dark:border-green-800/50 dark:bg-[#151D18] sm:flex-row sm:px-8">
+
                     <div>
-                        <h3 className="text-lg font-bold text-slate-900">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-gray-100">
                             Every act of kindness leaves a mark.
                         </h3>
-                        <p className="mt-1 text-sm text-slate-500">
+
+                        <p className="mt-1 text-sm text-slate-500 dark:text-gray-400">
                             Be part of the next story worth sharing.
                         </p>
                     </div>
 
                     <Link
                         href="/upcoming-events"
-                        className="inline-flex items-center gap-2 rounded-full bg-green-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-900"
+                        className="inline-flex items-center gap-2 rounded-full bg-green-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-900 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                     >
                         Find Your Next Event
                         <ArrowUpRight size={18} />
                     </Link>
                 </div>
+
             </div>
         </section>
     );

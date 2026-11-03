@@ -4,7 +4,6 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import JoinedEventCard from "@/components/JoinedEventCard";
 
-
 const JoinedEventsPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
@@ -35,21 +34,21 @@ const JoinedEventsPage = async () => {
     }
 
     return (
-        <main className="min-h-screen bg-[#FAFAF5]">
+        <main className="min-h-screen bg-[#FAFAF5] transition-colors duration-300 dark:bg-[#101812]">
             {/* Header */}
-            <section className="border-b border-green-100 bg-white">
+            <section className="border-b border-green-100 bg-white dark:border-green-900/50 dark:bg-[#151D18]">
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-                    <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-green-800">
+                    <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-green-800 dark:text-lime-400">
                         Your Community Journey
                     </p>
 
                     <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
                         <div>
-                            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-gray-100">
                                 Joined Events
                             </h1>
 
-                            <p className="mt-4 max-w-2xl leading-7 text-gray-500">
+                            <p className="mt-4 max-w-2xl leading-7 text-gray-500 dark:text-gray-400">
                                 Keep track of the community events you&apos;ve joined and get
                                 ready to make a difference together.
                             </p>
@@ -57,7 +56,7 @@ const JoinedEventsPage = async () => {
 
                         <Link
                             href="/upcoming-events"
-                            className="inline-flex w-fit items-center justify-center rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                            className="inline-flex w-fit items-center justify-center rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                         >
                             Explore Events →
                         </Link>
@@ -69,16 +68,16 @@ const JoinedEventsPage = async () => {
             <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div className="mb-8 flex items-center justify-between gap-4">
                     <div>
-                        <h2 className="text-2xl font-bold text-gray-900">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                             Your Events
                         </h2>
 
-                        <p className="mt-2 text-sm text-gray-500">
+                        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                             Events are arranged by date, starting with the soonest.
                         </p>
                     </div>
 
-                    <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800">
+                    <span className="shrink-0 rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-800 dark:bg-green-900/40 dark:text-lime-400">
                         {joinedEvents.length} {joinedEvents.length === 1 ? "Event" : "Events"}
                     </span>
                 </div>
@@ -90,23 +89,23 @@ const JoinedEventsPage = async () => {
                         })}
                     </div>
                 ) : (
-                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-16 text-center">
+                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-16 text-center dark:border-green-900/60 dark:bg-[#151D18]">
                         <div className="mb-5 text-5xl" aria-hidden="true">
                             🌱
                         </div>
 
-                        <h3 className="text-xl font-bold text-gray-900">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                             No joined events yet
                         </h3>
 
-                        <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-gray-500">
+                        <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-gray-500 dark:text-gray-400">
                             Your community journey starts here. Explore upcoming events
                             and join an initiative that matters to you.
                         </p>
 
                         <Link
                             href="/upcoming-events"
-                            className="mt-6 inline-flex items-center justify-center rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                            className="mt-6 inline-flex items-center justify-center rounded-xl bg-green-800 px-6 py-3 font-semibold text-white transition hover:bg-green-700 dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                         >
                             Explore Upcoming Events
                         </Link>

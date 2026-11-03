@@ -1,20 +1,25 @@
+
 import Link from "next/link";
 import { ArrowRight, Heart, Plus } from "lucide-react";
 
 const Banner = () => {
     return (
-        <section className="px-4 pt-5 sm:px-6 lg:px-8">
+        <section className="bg-[#FAFAF5] px-4 pt-5 transition-colors duration-300 dark:bg-[#101812] sm:px-6 lg:px-8">
             <div
-                className="relative mx-auto flex min-h-[480px] max-w-7xl items-center overflow-hidden rounded-3xl bg-cover bg-center sm:min-h-[520px] lg:min-h-[580px]"
+                className="relative mx-auto flex min-h-[480px] max-w-7xl items-center overflow-hidden rounded-3xl bg-cover bg-center shadow-sm transition-shadow duration-300 dark:shadow-2xl dark:shadow-black/20 sm:min-h-[520px] lg:min-h-[580px]"
                 style={{
                     backgroundImage: "url('/images/Banner.png')",
                 }}
             >
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/15 dark:from-black/90 dark:via-black/75 dark:to-black/35" />
+
+                {/* Additional dark theme overlay */}
+                <div className="absolute inset-0 bg-green-950/5 dark:bg-green-950/20" />
 
                 {/* Content */}
                 <div className="relative z-10 max-w-2xl px-6 py-16 sm:px-10 lg:px-16">
+
                     {/* Badge */}
                     <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-lime-200 backdrop-blur-sm">
                         <Heart size={16} />
@@ -39,7 +44,7 @@ const Banner = () => {
                     <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                         <Link
                             href="/upcoming-events"
-                            className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-7 font-semibold text-green-950 hover:bg-lime-200"
+                            className="inline-flex h-12 items-center justify-center rounded-full bg-lime-300 px-7 font-semibold text-green-950 shadow-lg shadow-lime-900/10 transition-all hover:-translate-y-0.5 hover:bg-lime-200"
                         >
                             Explore Events
                             <ArrowRight className="ml-2 h-5 w-5" />
@@ -47,7 +52,7 @@ const Banner = () => {
 
                         <Link
                             href="/create-event"
-                            className="inline-flex h-12 items-center justify-center rounded-full border border-white/70 bg-white/10 px-7 font-semibold text-white backdrop-blur-sm hover:bg-white hover:text-green-900"
+                            className="inline-flex h-12 items-center justify-center rounded-full border border-white/70 bg-white/10 px-7 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white hover:text-green-900"
                         >
                             <Plus className="mr-2 h-5 w-5" />
                             Create an Event
@@ -56,6 +61,7 @@ const Banner = () => {
 
                     {/* Kindora Impact Highlights */}
                     <div className="mt-10 grid grid-cols-2 gap-y-5 sm:grid-cols-4 sm:gap-0">
+
                         <div className="border-white/20 px-3 sm:border-r sm:px-4">
                             <h3 className="text-2xl font-extrabold tracking-tight text-lime-300 sm:text-3xl">
                                 1,200+
@@ -91,6 +97,7 @@ const Banner = () => {
                                 A Better Community
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>

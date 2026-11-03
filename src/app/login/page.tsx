@@ -62,13 +62,13 @@ export default function LoginForm() {
     }
 
     return (
-        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FAFAF5] px-4 py-12">
+        <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FAFAF5] px-4 py-12 transition-colors duration-300 dark:bg-[#101812]">
 
             {/* Background Decorations */}
-            <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-[#B9E769]/20 blur-3xl" />
-            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#166534]/10 blur-3xl" />
+            <div className="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-[#B9E769]/20 blur-3xl dark:bg-lime-400/10" />
+            <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#166534]/10 blur-3xl dark:bg-green-500/10" />
 
-            <Card className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-[#E5E7DF] bg-white shadow-2xl shadow-[#123524]/10">
+            <Card className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-[#E5E7DF] bg-white shadow-2xl shadow-[#123524]/10 dark:border-green-900/50 dark:bg-[#151D18]">
 
                 {/* Top Accent */}
                 <div className="h-2 bg-[#B9E769]" />
@@ -81,22 +81,22 @@ export default function LoginForm() {
                             🌱
                         </div>
 
-                        <span className="text-2xl font-bold tracking-tight text-[#123524]">
+                        <span className="text-2xl font-bold tracking-tight text-[#123524] dark:text-gray-100">
                             Kindora
                         </span>
                     </Link>
 
                     {/* Heading */}
                     <div className="space-y-2 pt-4">
-                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#66913C]">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#66913C] dark:text-lime-400">
                             Welcome Back
                         </p>
 
-                        <CardTitle className="text-3xl font-bold tracking-tight text-[#123524]">
+                        <CardTitle className="text-3xl font-bold tracking-tight text-[#123524] dark:text-gray-100">
                             Login to your account
                         </CardTitle>
 
-                        <CardDescription className="text-sm leading-6 text-gray-500">
+                        <CardDescription className="text-sm leading-6 text-gray-500 dark:text-gray-400">
                             Welcome back to Kindora! Sign in to discover events,
                             connect with your community, and make a difference.
                         </CardDescription>
@@ -113,7 +113,7 @@ export default function LoginForm() {
                             <Field>
                                 <FieldLabel
                                     htmlFor="email"
-                                    className="font-semibold text-[#123524]"
+                                    className="font-semibold text-[#123524] dark:text-gray-200"
                                 >
                                     Email Address
                                 </FieldLabel>
@@ -124,7 +124,7 @@ export default function LoginForm() {
                                     name="email"
                                     placeholder="you@example.com"
                                     required
-                                    className="h-12 rounded-lg border-gray-200 bg-[#FAFAF5]/60 focus-visible:ring-[#166534]"
+                                    className="h-12 rounded-lg border-gray-200 bg-[#FAFAF5]/60 focus-visible:ring-[#166534] dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
                             </Field>
 
@@ -133,14 +133,14 @@ export default function LoginForm() {
                                 <div className="flex items-center justify-between">
                                     <FieldLabel
                                         htmlFor="password"
-                                        className="font-semibold text-[#123524]"
+                                        className="font-semibold text-[#123524] dark:text-gray-200"
                                     >
                                         Password
                                     </FieldLabel>
 
                                     <Link
                                         href="/forgot-password"
-                                        className="text-sm font-medium text-[#166534] underline-offset-4 hover:underline"
+                                        className="text-sm font-medium text-[#166534] underline-offset-4 hover:underline dark:text-lime-400"
                                     >
                                         Forgot password?
                                     </Link>
@@ -152,7 +152,7 @@ export default function LoginForm() {
                                     name="password"
                                     placeholder="Enter your password"
                                     required
-                                    className="h-12 rounded-lg border-gray-200 bg-[#FAFAF5]/60 focus-visible:ring-[#166534]"
+                                    className="h-12 rounded-lg border-gray-200 bg-[#FAFAF5]/60 focus-visible:ring-[#166534] dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
                             </Field>
 
@@ -160,7 +160,7 @@ export default function LoginForm() {
                             <Field className="gap-4 pt-2">
                                 <Button
                                     type="submit"
-                                    className="h-12 w-full rounded-lg bg-[#166534] text-base font-semibold text-white shadow-md shadow-[#166534]/15 transition-all hover:bg-[#123524]"
+                                    className="h-12 w-full rounded-lg bg-[#166534] text-base font-semibold text-white shadow-md shadow-[#166534]/15 transition-all hover:bg-[#123524] dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                                 >
                                     Login to Your Account
                                     <span className="ml-1">→</span>
@@ -168,11 +168,11 @@ export default function LoginForm() {
 
                                 {/* Divider */}
                                 <div className="relative flex items-center">
-                                    <div className="grow border-t border-gray-200" />
-                                    <span className="px-3 text-xs font-medium text-gray-400">
+                                    <div className="grow border-t border-gray-200 dark:border-green-900/50" />
+                                    <span className="px-3 text-xs font-medium text-gray-400 dark:text-gray-500">
                                         OR CONTINUE WITH
                                     </span>
-                                    <div className="grow border-t border-gray-200" />
+                                    <div className="grow border-t border-gray-200 dark:border-green-900/50" />
                                 </div>
 
                                 {/* Google Button */}
@@ -180,7 +180,7 @@ export default function LoginForm() {
                                     onClick={handleGoogleSignIn}
                                     variant="outline"
                                     type="button"
-                                    className="h-12 w-full rounded-lg border-gray-200 font-semibold text-[#123524] transition-colors hover:bg-[#FAFAF5]"
+                                    className="h-12 w-full rounded-lg border-gray-200 font-semibold text-[#123524] transition-colors hover:bg-[#FAFAF5] dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-200 dark:hover:bg-[#26372B]"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -208,11 +208,11 @@ export default function LoginForm() {
                                 </Button>
 
                                 {/* Signup Link */}
-                                <FieldDescription className="pt-3 text-center text-sm text-gray-500">
+                                <FieldDescription className="pt-3 text-center text-sm text-gray-500 dark:text-gray-400">
                                     Don&apos;t have an account?{" "}
                                     <Link
                                         href="/signup"
-                                        className="font-semibold text-[#166534] underline-offset-4 hover:underline"
+                                        className="font-semibold text-[#166534] underline-offset-4 hover:underline dark:text-lime-400"
                                     >
                                         Create an account
                                     </Link>

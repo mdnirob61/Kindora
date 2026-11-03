@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
@@ -72,23 +73,27 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
     };
 
     return (
-        <div className="mt-10 border-t border-gray-100 pt-8">
+        <div className="mt-10 border-t border-gray-100 pt-8 dark:border-green-900/50">
 
-            <div className="flex flex-col gap-5 rounded-2xl border border-[#E5E7DF] bg-[#FAFAF5] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="flex flex-col gap-5 rounded-2xl border border-[#E5E7DF] bg-[#FAFAF5] p-5 transition-colors duration-300 dark:border-green-900/60 dark:bg-[#1C2920] sm:flex-row sm:items-center sm:justify-between sm:p-6">
 
                 {/* Volunteer Information */}
-                <form onSubmit={handleJoinEvent} className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-100">
+                <form
+                    onSubmit={handleJoinEvent}
+                    className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-100"
+                >
                     <div className="flex items-center gap-4">
 
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#E7F2E4] text-[#166534]">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#E7F2E4] text-[#166534] dark:bg-green-900/50 dark:text-lime-400">
                             <Users size={27} />
                         </div>
 
                         <div>
-                            <h3 className="text-lg font-bold text-[#123524]">
+                            <h3 className="text-lg font-bold text-[#123524] dark:text-gray-100">
                                 Be Part of the Change
                             </h3>
-                            <p className="mt-1 text-sm text-gray-500">
+
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                                 {isJoined
                                     ? "Thank you for being part of this event!"
                                     : "Be part of something meaningful."}
@@ -103,9 +108,9 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
                         <Button
                             type="submit"
                             disabled={isJoined}
-                            className={`h-12 rounded-xl px-6 font-semibold text-white shadow-md transition-all sm:px-7 ${isJoined
-                                ? "cursor-not-allowed bg-gray-400 opacity-80"
-                                : "bg-[#166534] shadow-[#166534]/15 hover:bg-[#123524]"
+                            className={`h-12 rounded-xl px-6 font-semibold shadow-md transition-all sm:px-7 ${isJoined
+                                    ? "cursor-not-allowed bg-gray-400 text-white opacity-80 dark:bg-gray-600 dark:text-gray-200"
+                                    : "bg-[#166534] text-white shadow-[#166534]/15 hover:bg-[#123524] dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                                 }`}
                         >
                             {isJoined ? (
@@ -120,11 +125,12 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
                                 </>
                             )}
                         </Button>
+
                     </div>
                 </form>
             </div>
 
-            <p className="mt-4 text-center text-xs text-gray-400">
+            <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
                 Together, small actions create meaningful change.
             </p>
 

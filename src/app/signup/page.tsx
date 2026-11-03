@@ -86,9 +86,9 @@ export default function SignupForm() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF5] px-4 py-12">
+        <div className="flex min-h-screen items-center justify-center bg-[#FAFAF5] px-4 py-12 transition-colors duration-300 dark:bg-[#101812]">
 
-            <Card className="w-full max-w-lg border border-[#E5E7DF] bg-white shadow-xl shadow-[#123524]/5 rounded-2xl overflow-hidden">
+            <Card className="w-full max-w-lg overflow-hidden rounded-2xl border border-[#E5E7DF] bg-white shadow-xl shadow-[#123524]/5 dark:border-green-900/50 dark:bg-[#151D18]">
 
                 <div className="h-2 bg-[#B9E769]" />
 
@@ -97,21 +97,21 @@ export default function SignupForm() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#166534] text-xl">
                             🌱
                         </div>
-                        <span className="text-xl font-bold tracking-tight text-[#123524]">
+                        <span className="text-xl font-bold tracking-tight text-[#123524] dark:text-gray-100">
                             Kindora
                         </span>
                     </div>
 
                     <div className="space-y-2 pt-3">
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#66913C]">
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#66913C] dark:text-lime-400">
                             Join Our Community
                         </p>
 
-                        <CardTitle className="text-3xl font-bold tracking-tight text-[#123524]">
+                        <CardTitle className="text-3xl font-bold tracking-tight text-[#123524] dark:text-gray-100">
                             Create your account
                         </CardTitle>
 
-                        <CardDescription className="text-sm leading-6 text-gray-500">
+                        <CardDescription className="text-sm leading-6 text-gray-500 dark:text-gray-400">
                             Be part of something meaningful. Connect with people and
                             make a positive impact in your community.
                         </CardDescription>
@@ -123,69 +123,79 @@ export default function SignupForm() {
                         <FieldGroup className="gap-5">
 
                             <Field>
-                                <FieldLabel htmlFor="name">Full Name <span className="text-red-500">*</span></FieldLabel>
+                                <FieldLabel htmlFor="name" className="dark:text-gray-200">
+                                    Full Name <span className="text-red-500">*</span>
+                                </FieldLabel>
                                 <Input
                                     id="name"
                                     type="text"
                                     name="name"
                                     placeholder="Enter your full name"
                                     required
-                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
+                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="image">Profile Image URL</FieldLabel>
+                                <FieldLabel htmlFor="image" className="dark:text-gray-200">
+                                    Profile Image URL
+                                </FieldLabel>
                                 <Input
                                     id="image"
                                     type="url"
                                     name="image"
                                     placeholder="https://example.com/image.jpg"
-                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
+                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="email">Email Address <span className="text-red-500">*</span></FieldLabel>
+                                <FieldLabel htmlFor="email" className="dark:text-gray-200">
+                                    Email Address <span className="text-red-500">*</span>
+                                </FieldLabel>
                                 <Input
                                     id="email"
                                     type="email"
                                     name="email"
                                     placeholder="email@example.com"
                                     required
-                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
+                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
-                                <FieldDescription className="text-xs text-gray-400">
+                                <FieldDescription className="text-xs text-gray-400 dark:text-gray-500">
                                     Your email will only be used for account-related communication.
                                 </FieldDescription>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="password">Password <span className="text-red-500">*</span></FieldLabel>
+                                <FieldLabel htmlFor="password" className="dark:text-gray-200">
+                                    Password <span className="text-red-500">*</span>
+                                </FieldLabel>
                                 <Input
                                     id="password"
                                     type="password"
                                     name="password"
                                     placeholder="Create a password"
                                     required
-                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
+                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
-                                <FieldDescription className="text-xs text-gray-400">
+                                <FieldDescription className="text-xs text-gray-400 dark:text-gray-500">
                                     At least 6 characters, including one uppercase and one lowercase letter.
                                 </FieldDescription>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="confirmPassword">Confirm Password <span className="text-red-500">*</span></FieldLabel>
+                                <FieldLabel htmlFor="confirmPassword" className="dark:text-gray-200">
+                                    Confirm Password <span className="text-red-500">*</span>
+                                </FieldLabel>
                                 <Input
                                     id="confirmPassword"
                                     type="password"
                                     name="confirmPassword"
                                     placeholder="Confirm your password"
                                     required
-                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60"
+                                    className="h-11 rounded-lg border-gray-200 bg-[#FAFAF5]/60 dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus-visible:ring-lime-400"
                                 />
-                                <FieldDescription className="text-xs text-gray-400">
+                                <FieldDescription className="text-xs text-gray-400 dark:text-gray-500">
                                     Enter the same password again.
                                 </FieldDescription>
                             </Field>
@@ -193,22 +203,22 @@ export default function SignupForm() {
                             <Field className="gap-4 pt-2">
                                 <Button
                                     type="submit"
-                                    className="h-12 w-full rounded-lg bg-[#166534] text-base font-semibold text-white hover:bg-[#123524]"
+                                    className="h-12 w-full rounded-lg bg-[#166534] text-base font-semibold text-white hover:bg-[#123524] dark:bg-lime-400 dark:text-green-950 dark:hover:bg-lime-300"
                                 >
                                     Create Account →
                                 </Button>
 
                                 <div className="relative flex items-center">
-                                    <div className="grow border-t border-gray-200" />
-                                    <span className="px-3 text-xs text-gray-400">OR</span>
-                                    <div className="grow border-t border-gray-200" />
+                                    <div className="grow border-t border-gray-200 dark:border-green-900/50" />
+                                    <span className="px-3 text-xs text-gray-400 dark:text-gray-500">OR</span>
+                                    <div className="grow border-t border-gray-200 dark:border-green-900/50" />
                                 </div>
 
                                 <Button
                                     onClick={handleGoogleSignUp}
                                     variant="outline"
                                     type="button"
-                                    className="h-11 w-full rounded-lg border-gray-200 font-semibold text-[#123524] hover:bg-[#FAFAF5]"
+                                    className="h-11 w-full rounded-lg border-gray-200 font-semibold text-[#123524] hover:bg-[#FAFAF5] dark:border-green-900/60 dark:bg-[#1C2920] dark:text-gray-200 dark:hover:bg-[#26372B]"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -235,11 +245,11 @@ export default function SignupForm() {
                                     Sign up with Google
                                 </Button>
 
-                                <FieldDescription className="pt-2 text-center text-sm text-gray-500">
+                                <FieldDescription className="pt-2 text-center text-sm text-gray-500 dark:text-gray-400">
                                     Already have an account?{" "}
                                     <Link
                                         href="/login"
-                                        className="font-semibold text-[#166534] hover:underline"
+                                        className="font-semibold text-[#166534] hover:underline dark:text-lime-400"
                                     >
                                         Sign in
                                     </Link>
