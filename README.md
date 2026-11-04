@@ -17,8 +17,11 @@ A community service platform that brings volunteers and event organizers togethe
 
 <br />
 
-<a href="[KINDORA_LIVE_SITE_URL](https://kindora-ashy.vercel.app/)">
-  <img src="https://img.shields.io/badge/Live%20Website-Visit%20Kindora-166534?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Website" />
+<a href="https://kindora-ashy.vercel.app/" target="_blank">
+  <img
+    src="https://img.shields.io/badge/Live%20Website-Visit%20Kindora-166534?style=for-the-badge&logo=vercel&logoColor=white"
+    alt="Live Website"
+  />
 </a>
 
 <br /><br />
