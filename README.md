@@ -1,6 +1,7 @@
 <div align="center">
 
-**🌱 Kindora — Small Acts. Stronger Communities.**
+**<img width="1254" height="1254" alt="icon" src="https://github.com/user-attachments/assets/35b6cb4b-ab0b-4508-a98f-3b3d0f208311" />
+ Kindora — Small Acts. Stronger Communities.**
 
 ### Small Acts. Stronger Communities.
 
@@ -8,7 +9,7 @@ A community service platform that brings volunteers and event organizers togethe
 
 <br />
 
-<a href="YOUR_LIVE_SITE_URL">
+<a href="[KINDORA_LIVE_SITE_URL](https://kindora-ashy.vercel.app/)">
   <img src="https://img.shields.io/badge/Live%20Website-Visit%20Kindora-166534?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Website" />
 </a>
 
@@ -23,7 +24,8 @@ A community service platform that brings volunteers and event organizers togethe
 
 ---
 
-## 🌱 About Kindora
+**<img width="1254" height="1254" alt="icon" src="https://github.com/user-attachments/assets/80c5f5f8-561b-40dc-93ea-5cd53e6f9237" />
+ About Kindora**
 
 **Kindora** is a community-driven social development platform designed to make volunteering and community participation easier. Users can discover upcoming events, join meaningful activities, and organize their own initiatives to make a difference.
 
@@ -62,7 +64,7 @@ Whether it's cleaning public spaces, planting trees, donating essentials, or hel
 
 ## 🔗 Project Links
 
-- **Live Website:** YOUR_LIVE_SITE_URL
+- **Live Website:** [KINDORA_LIVE_SITE_URL](https://kindora-ashy.vercel.app/)
 - **Client Repository:** [KINDORA_CLIENT_GITHUB_URL](https://github.com/mdnirob61/Kindora)
 - **Server Repository:** [KINDORA_SERVER_GITHUB_URL](https://github.com/mdnirob61/kindora-server)
 
