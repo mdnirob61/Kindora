@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import JoinedEventCard from "@/components/JoinedEventCard";
 import { getTokenFromServer } from "@/lib/getTokenFromServer";
+import { toast } from "react-toastify";
 
 const JoinedEventsPage = async () => {
     const session = await auth.api.getSession({
@@ -16,7 +17,7 @@ const JoinedEventsPage = async () => {
 
     try {
         const response = await fetch(
-            `http://localhost:5000/joined-events/${user?.email}`,
+            `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${user?.email}`,
             {
                 cache: "no-store",
                 headers: {
@@ -37,6 +38,7 @@ const JoinedEventsPage = async () => {
         }
     } catch (error) {
         console.error("Failed to fetch joined events:", error);
+        toast.error("Failed to fetch joined events");
     }
 
     return (

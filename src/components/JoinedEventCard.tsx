@@ -16,7 +16,7 @@ const JoinedEventCard = ({ event }: { event: IEvent }) => {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/joined-events/${event._id}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/joined-events/${event._id}`,
                 {
                     method: "DELETE",
                     headers: {

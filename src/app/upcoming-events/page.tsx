@@ -6,7 +6,7 @@ const UpcomingEventsPage = async () => {
     let events: IEvent[] = [];
 
     try {
-        const response = await fetch(`http://localhost:5000/upcoming-events`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-events`);
 
         if (response.ok) {
             const allEvents: IEvent[] = await response.json();

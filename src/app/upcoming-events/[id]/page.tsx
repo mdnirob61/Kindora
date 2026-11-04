@@ -11,7 +11,7 @@ interface EventDetailsPageProps {
 const EventDetailsPage = async ({ params }: EventDetailsPageProps) => {
     const { id } = await params;
 
-    const res = await fetch(`http://localhost:5000/upcoming-event/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-event/${id}`);
 
     if (!res.ok) notFound();
 

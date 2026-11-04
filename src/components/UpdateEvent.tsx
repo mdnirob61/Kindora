@@ -67,7 +67,7 @@ export default function UpdateEventsPage({ event }: { event: IEvent }) {
 
         const token = await getTokenFromClient();
 
-        const res = await fetch(`http://localhost:5000/manage-events/${event._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/manage-events/${event._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

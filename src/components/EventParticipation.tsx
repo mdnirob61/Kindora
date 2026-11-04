@@ -43,7 +43,7 @@ const EventParticipation = ({ event }: { event: IEvent }) => {
         const token = await getTokenFromClient();
 
         try {
-            const res = await fetch("http://localhost:5000/joined-event", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/joined-event`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -22,7 +22,7 @@ const ManageEventsPage = async () => {
     if (user?.email) {
         try {
             const response = await fetch(
-                `http://localhost:5000/manage-events/${user.email}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/manage-events/${user.email}`,
                 {
                     cache: "no-store",
                     headers: {
