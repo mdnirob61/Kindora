@@ -1,6 +1,6 @@
 <div align="center">
 
-**<img width="1254" height="1254" alt="icon" src="https://github.com/user-attachments/assets/35b6cb4b-ab0b-4508-a98f-3b3d0f208311" />
+**<img width="50" height="50" alt="icon" src="https://github.com/user-attachments/assets/35b6cb4b-ab0b-4508-a98f-3b3d0f208311" />
  Kindora — Small Acts. Stronger Communities.**
 
 ### Small Acts. Stronger Communities.
@@ -24,7 +24,7 @@ A community service platform that brings volunteers and event organizers togethe
 
 ---
 
-**<img width="1254" height="1254" alt="icon" src="https://github.com/user-attachments/assets/80c5f5f8-561b-40dc-93ea-5cd53e6f9237" />
+**<img width="50" height="50" alt="icon" src="https://github.com/user-attachments/assets/80c5f5f8-561b-40dc-93ea-5cd53e6f9237" />
  About Kindora**
 
 **Kindora** is a community-driven social development platform designed to make volunteering and community participation easier. Users can discover upcoming events, join meaningful activities, and organize their own initiatives to make a difference.
