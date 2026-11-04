@@ -1,4 +1,4 @@
-<div align="center">
+ <div align="center">
 
 <h1 align="center">
   <img
@@ -6,9 +6,9 @@
     width="50"
     height="50"
     alt="Kindora Logo"
-    style="vertical-align: middle;"
+    align="middle"
   />
-  <span style="vertical-align: middle;">Kindora — Small Acts. Stronger Communities.</span>
+  Kindora
 </h1>
 
 ### Small Acts. Stronger Communities.
@@ -38,12 +38,12 @@ A community service platform that brings volunteers and event organizers togethe
 <h2>
   <img
     src="https://github.com/user-attachments/assets/80c5f5f8-561b-40dc-93ea-5cd53e6f9237"
-    width="50"
-    height="50"
+    width="40"
+    height="40"
     alt="Kindora Icon"
-    style="vertical-align: middle;"
+    align="middle"
   />
-  <span style="vertical-align: middle;">About Kindora</span>
+  About Kindora
 </h2>
 
 **Kindora** is a community-driven social development platform designed to make volunteering and community participation easier. Users can discover upcoming events, join meaningful activities, and organize their own initiatives to make a difference.
@@ -67,29 +67,37 @@ Whether it's cleaning public spaces, planting trees, donating essentials, or hel
 
 ## 🛠️ Technologies Used
 
-<div align="left">
+**Frontend**
 
-<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white" />
-<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
-<img src="https://img.shields.io/badge/Shadcn_UI-000000?style=flat-square&logo=shadcnui&logoColor=white" />
-<img src="https://img.shields.io/badge/Better_Auth-333333?style=flat-square" />
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
-<img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" />
-<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" />
+<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+<img src="https://img.shields.io/badge/Shadcn_UI-000000?style=flat-square&logo=shadcnui&logoColor=white" alt="Shadcn UI" />
 
-</div>
+**Authentication & Backend**
+
+<img src="https://img.shields.io/badge/Better_Auth-333333?style=flat-square" alt="Better Auth" />
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js" />
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB" />
+<img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white" alt="JWT" />
+
+**Deployment**
+
+<img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
 
 ## 🔗 Project Links
 
-- **Live Website:** [KINDORA_LIVE_SITE_URL](https://kindora-ashy.vercel.app/)
-- **Client Repository:** [KINDORA_CLIENT_GITHUB_URL](https://github.com/mdnirob61/Kindora)
-- **Server Repository:** [KINDORA_SERVER_GITHUB_URL](https://github.com/mdnirob61/kindora-server)
+- **Live Website:** [Visit Kindora](https://kindora-ashy.vercel.app/)
+- **Client Repository:** [GitHub – Kindora](https://github.com/mdnirob61/Kindora)
+- **Server Repository:** [GitHub – Kindora Server](https://github.com/mdnirob61/kindora-server)
 
 ## 🎯 Project Goal
 
 Kindora aims to build stronger communities by connecting people who care about making a difference. It encourages everyone to participate in social development through volunteering, collaboration, and meaningful community activities.
+
+---
 
 <div align="center">
 
