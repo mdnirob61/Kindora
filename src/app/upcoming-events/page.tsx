@@ -6,7 +6,10 @@ const UpcomingEventsPage = async () => {
     let events: IEvent[] = [];
 
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-events`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-events`,
+            {
+                cache: 'no-store'
+            });
 
         if (response.ok) {
             const allEvents: IEvent[] = await response.json();

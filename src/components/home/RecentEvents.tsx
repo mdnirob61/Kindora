@@ -3,7 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const RecentEvents = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recent-upcoming-events`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recent-upcoming-events`,
+        {
+            cache: 'no-store'
+        });
 
     const events: IEvent[] = response.ok
         ? await response.json()

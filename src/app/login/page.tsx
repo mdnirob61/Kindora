@@ -137,13 +137,6 @@ export default function LoginForm() {
                                     >
                                         Password
                                     </FieldLabel>
-
-                                    <Link
-                                        href="/forgot-password"
-                                        className="text-sm font-medium text-[#166534] underline-offset-4 hover:underline dark:text-lime-400"
-                                    >
-                                        Forgot password?
-                                    </Link>
                                 </div>
 
                                 <Input
