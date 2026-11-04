@@ -8,14 +8,14 @@ interface EventDetailsPageProps {
     params: Promise<{ id: string }>
 }
 
-const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
+const EventDetailsPage = async ({ params }: EventDetailsPageProps) => {
     const { id } = await params;
 
     const res = await fetch(`http://localhost:5000/upcoming-event/${id}`);
-    
-    if (!res.ok) notFound();
-    const event: IEvent = await res.json();
 
+    if (!res.ok) notFound();
+
+    const event: IEvent = await res.json();
 
     if (!event) {
         return (
@@ -51,6 +51,8 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
                 </Link>
 
                 <article className="overflow-hidden rounded-2xl bg-white shadow-sm transition-colors duration-300 dark:bg-[#151D18] dark:shadow-black/20">
+
+                    {/* Event Image */}
                     {event.thumbnail && (
                         <div className="relative h-64 w-full sm:h-96">
                             <Image
@@ -65,6 +67,8 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
                     )}
 
                     <div className="p-6 sm:p-10">
+
+                        {/* Event Information */}
                         <span className="inline-block rounded-full bg-green-100 px-4 py-1.5 text-sm font-semibold text-green-800 dark:bg-lime-900/40 dark:text-lime-300">
                             {event.eventType}
                         </span>
@@ -88,17 +92,53 @@ const EventDetailsPage = async ({ params, }: EventDetailsPageProps) => {
                             </p>
                         </div>
 
-                        <div className="mt-8 border-t border-gray-100 pt-7 dark:border-green-900/50">
-                            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                                About This Event
-                            </h2>
+                        {/* Description + Organizer */}
+                        <div className="mt-8 grid grid-cols-1 gap-8 border-t border-gray-100 pt-7 dark:border-green-900/50 lg:grid-cols-[minmax(0,1fr)_280px]">
 
-                            <p className="mt-4 whitespace-pre-line leading-8 text-gray-600 dark:text-gray-300">
-                                {event.description}
-                            </p>
+                            {/* Event Description */}
+                            <div>
+                                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                                    About This Event
+                                </h2>
+
+                                <p className="mt-4 whitespace-pre-line leading-8 text-gray-600 dark:text-gray-300">
+                                    {event.description}
+                                </p>
+                            </div>
+
+                            {/* Organizer Card */}
+                            <aside className="h-fit rounded-2xl border border-green-100 bg-[#FAFAF5] p-5 dark:border-green-900/50 dark:bg-[#1C2920] lg:sticky lg:top-24">
+                                <h2 className="mb-5 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                    Event Organizer
+                                </h2>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 text-xl dark:bg-green-900/50">
+                                        👤
+                                    </div>
+
+                                    <div className="min-w-0">
+                                        <p className="font-semibold text-gray-900 dark:text-gray-100">
+                                            Community Organizer
+                                        </p>
+
+                                        <p className="mt-1 break-all text-xs text-gray-500 dark:text-gray-400">
+                                            {event.email}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-5 border-t border-green-100 pt-4 dark:border-green-900/50">
+                                    <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">
+                                        Making a difference through community service and meaningful activities.
+                                    </p>
+                                </div>
+                            </aside>
                         </div>
 
-                        <EventParticipation event={event}></EventParticipation>
+                        {/* Event Participation */}
+                        <EventParticipation event={event} />
+
                     </div>
                 </article>
             </div>
