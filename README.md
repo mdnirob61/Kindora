@@ -63,8 +63,8 @@ Whether it's cleaning public spaces, planting trees, donating essentials, or hel
 ## 🔗 Project Links
 
 - **Live Website:** YOUR_LIVE_SITE_URL
-- **Client Repository:** [YOUR_CLIENT_GITHUB_URL](https://github.com/mdnirob61/Kindora)
-- **Server Repository:** [YOUR_SERVER_GITHUB_URL](https://github.com/mdnirob61/kindora-server)
+- **Client Repository:** [KINDORA_CLIENT_GITHUB_URL](https://github.com/mdnirob61/Kindora)
+- **Server Repository:** [KINDORA_SERVER_GITHUB_URL](https://github.com/mdnirob61/kindora-server)
 
 ## 🎯 Project Goal
 
